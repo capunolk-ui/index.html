@@ -1,6 +1,269 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia Portfolio</title>
+    <style>
+        /* --- CSS STYLING (The Design) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0d1117; /* Dark background from your screenshot */
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: #161b22;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #58a6ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #c9d1d9;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 15%;
+            background: linear-gradient(to bottom, #161b22, #0d1117);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #58a6ff;
+            margin-bottom: 10px;
+        }
+
+        .hero h3 {
+            font-size: 1.4rem;
+            color: #79c0ff;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .hero p {
+            color: #8b949e;
+            max-width: 750px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* Projects Section */
+        .portfolio-section {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #58a6ff;
+            margin-bottom: 40px;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* The underline under "Featured Projects" */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #58a6ff;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        /* Clickable Cards */
+        .project-card {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 15px;
+            overflow: hidden;
+            text-decoration: none; /* Removes underline from links */
+            color: inherit;
+            text-align: left;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #58a6ff;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 250px;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h2 {
+            font-size: 1.5rem;
+            color: #58a6ff;
+            margin-bottom: 5px;
+        }
+
+        .category {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #58a6ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: #8b949e;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        /* Tags at the bottom of cards */
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #21262d;
+            color: #58a6ff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            border: 1px solid #30363d;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Hides menu on tiny phones */
+        }
+    </style>
+</head>
 <body>
-    <h1>My Website is Live!</h1>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">
+            <span>🎨</span> Multimedia Portfolio
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <h1>Multimedia & Authoring</h1>
+        <h3>Rotoscope and 3D Rendering</h3>
+        <p>
+            Exploring the art of rotoscoping and the realism of 3D rendering to create compelling visual narratives. 
+            Merging creativity with technology to bring motion and dimension to digital storytelling.
+        </p>
+    </header>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio-section" id="portfolio">
+        <h1 class="section-title">Featured Projects</h1>
+
+        <div class="project-grid">
+            
+            <!-- PROJECT 1: SOLAR SYSTEM -->
+            <a href="https://google.com" class="project-card"> <!-- Change link here -->
+                <div class="card-image">
+                    <!-- Replace this URL with your Mars image later -->
+                    <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000" alt="Solar System">
+                </div>
+                <div class="card-content">
+                    <h2>3D Solar System</h2>
+                    <p class="category">3D RENDERING</p>
+                    <p class="description">3D rendering of planets involves creating realistic visual models of celestial bodies using computer graphics. It simulates textures, lighting, and atmospheric effects.</p>
+                    <div class="tags">
+                        <span class="tag">Blender</span>
+                        <span class="tag">3D Modeling</span>
+                        <span class="tag">Python Script</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- PROJECT 2: ROTOSCOPE -->
+            <a href="https://google.com" class="project-card"> <!-- Change link here -->
+                <div class="card-image">
+                    <!-- Replace this URL with your Rotoscope image later -->
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000" alt="Rotoscope">
+                </div>
+                <div class="card-content">
+                    <h2>1-minute Video Rotoscope</h2>
+                    <p class="category">ROTOSCOPE</p>
+                    <p class="description">Video rotoscoping is a technique where artists trace over footage frame by frame to isolate subjects or create visual effects. It's commonly used for background removal.</p>
+                    <div class="tags">
+                        <span class="tag">Adobe After Effects</span>
+                        <span class="tag">Adobe Premiere Pro</span>
+                        <span class="tag">Capcut</span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
 </body>
 </html>
