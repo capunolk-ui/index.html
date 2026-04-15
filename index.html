@@ -18,7 +18,7 @@
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0d1117; /* Dark background */
+            background-color: #0d1117; 
             color: white;
             line-height: 1.6;
         }
@@ -114,7 +114,7 @@
             border-radius: 2px;
         }
 
-        /* Project Grid (Home) */
+        /* Project Grid */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -203,24 +203,30 @@
             box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
         }
 
-        /* YouTube Container */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 ratio */
-            height: 0;
-            overflow: hidden;
+        /* Thumbnail Replacement for Video */
+        .video-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://img.youtube.com/vi/R9Z8BAnS87Y/maxresdefault.jpg');
+            background-size: cover;
+            background-position: center;
             border-radius: 12px;
             margin-bottom: 20px;
-            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border: 1px solid #30363d;
+            text-decoration: none;
         }
 
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .play-btn {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
         }
 
         .media-placeholder {
@@ -269,7 +275,7 @@
     <section class="page-section hero" id="home">
         <h1>Multimedia & Authoring</h1>
         <h3>Rotoscope and 3D Rendering</h3>
-        <p>Exploring the art of rotoscoping and the realism of 3D rendering to create compelling visual narratives. Merging creativity with technology to bring motion and dimension to digital storytelling.</p>
+        <p>Exploring the art of rotoscoping and the realism of 3D rendering to create compelling visual narratives.</p>
     </section>
 
     <!-- PORTFOLIO SECTION -->
@@ -278,7 +284,6 @@
         <div class="title-underline"></div>
 
         <div class="project-grid">
-            <!-- CLICKABLE ROTOSCOPE CARD -->
             <a href="#tutorial" class="project-card">
                 <div class="card-image">
                     <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000" alt="Rotoscope">
@@ -286,11 +291,10 @@
                 <div class="card-content">
                     <h2>1-minute Video Rotoscope</h2>
                     <p class="category">ROTOSCOPE</p>
-                    <p>Video rotoscoping is a technique where artists trace over footage frame by frame. Click to view tutorial.</p>
+                    <p>Click to view the step-by-step guide for this project.</p>
                 </div>
             </a>
 
-            <!-- SOLAR SYSTEM CARD -->
             <div class="project-card">
                 <div class="card-image">
                     <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000" alt="Solar System">
@@ -298,7 +302,7 @@
                 <div class="card-content">
                     <h2>3D Solar System</h2>
                     <p class="category">3D RENDERING</p>
-                    <p>3D rendering of planets involves creating realistic visual models of celestial bodies.</p>
+                    <p>Realistic visual models of celestial bodies.</p>
                 </div>
             </div>
         </div>
@@ -311,18 +315,12 @@
 
         <div class="tutorial-grid">
             
-            <!-- STEP 1 WITH YOUTUBE VIDEO -->
+            <!-- STEP 1: FIX FOR UNAVAILABLE VIDEO -->
             <div class="step-card">
                 <div class="step-number">1</div>
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/R9Z8BAnS87Y" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+                <a href="https://www.youtube.com/watch?v=R9Z8BAnS87Y" target="_blank" class="video-placeholder">
+                    <div class="play-btn">▶ Watch on YouTube</div>
+                </a>
                 <h3>Select Source Material</h3>
                 <p>Choose high-quality video with clear subject-background contrast and interesting movement patterns.</p>
             </div>
