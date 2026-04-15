@@ -6,8 +6,15 @@
     <title>Multimedia Portfolio</title>
     <style>
         /* --- CSS STYLING --- */
-        html { scroll-behavior: smooth; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -29,15 +36,39 @@
             border-bottom: 1px solid #30363d;
         }
 
-        .logo { font-weight: bold; color: #58a6ff; display: flex; align-items: center; gap: 10px; }
-        .nav-links { list-style: none; display: flex; gap: 25px; }
-        .nav-links a { text-decoration: none; color: #c9d1d9; font-size: 0.9rem; transition: 0.3s; }
-        .nav-links a:hover { color: #58a6ff; }
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #58a6ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #c9d1d9;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
 
         /* Section Layouts */
-        .page-section { min-height: 100vh; padding: 100px 8%; }
+        .page-section {
+            min-height: 100vh;
+            padding: 100px 8%;
+        }
 
-        /* Hero Section */
+        /* Hero Section (Home) */
         .hero {
             text-align: center;
             display: flex;
@@ -47,16 +78,49 @@
             background: linear-gradient(to bottom, #161b22, #0d1117);
         }
 
-        .hero h1 { font-size: 3.5rem; color: #58a6ff; margin-bottom: 10px; }
-        .hero h3 { font-size: 1.4rem; color: #79c0ff; margin-bottom: 25px; font-weight: 400; }
-        .hero p { color: #8b949e; max-width: 750px; }
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #58a6ff;
+            margin-bottom: 10px;
+        }
+
+        .hero h3 {
+            font-size: 1.4rem;
+            color: #79c0ff;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .hero p {
+            color: #8b949e;
+            max-width: 750px;
+            font-size: 1.05rem;
+        }
 
         /* Titles */
-        .section-title { text-align: center; font-size: 2.5rem; color: #58a6ff; margin-bottom: 40px; display: block; }
-        .title-underline { width: 50px; height: 4px; background: #58a6ff; margin: -30px auto 40px; border-radius: 2px; }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #58a6ff;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .title-underline {
+            width: 50px;
+            height: 4px;
+            background: #58a6ff;
+            margin: -30px auto 40px;
+            border-radius: 2px;
+        }
 
         /* Project Grid */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
         .project-card {
             background-color: #161b22;
             border: 1px solid #30363d;
@@ -64,16 +128,45 @@
             overflow: hidden;
             text-decoration: none;
             color: inherit;
-            transition: 0.3s;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        .project-card:hover { transform: translateY(-8px); border-color: #58a6ff; }
-        .card-image { width: 100%; height: 200px; background-color: #000; overflow: hidden; }
-        .card-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-        .card-content { padding: 25px; }
-        .card-content h2 { color: #58a6ff; margin-bottom: 5px; }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #58a6ff;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h2 {
+            font-size: 1.5rem;
+            color: #58a6ff;
+            margin-bottom: 5px;
+        }
 
         /* --- TUTORIAL SECTION --- */
-        .tutorial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .tutorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
         .step-card {
             background-color: #161b22;
             border: 1px solid #30363d;
@@ -82,34 +175,74 @@
             text-align: left;
             transition: 0.3s;
         }
-        .step-card.active { border-color: #58a6ff; box-shadow: 0 0 20px rgba(88, 166, 255, 0.15); }
-        .step-number {
-            background-color: #58a6ff; color: white; width: 40px; height: 40px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 20px;
+
+        .step-card.active {
+            border-color: #58a6ff;
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.15);
         }
 
-        /* Video Styling */
+        .step-number {
+            background-color: #58a6ff;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
+        }
+
+        /* Video Container */
         .video-container {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 ratio */
             height: 0;
             overflow: hidden;
             border-radius: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             background: #000;
             border: 1px solid #30363d;
         }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        .media-placeholder {
-            width: 100%; aspect-ratio: 16/9; background-color: #000; border-radius: 12px;
-            margin-bottom: 20px; border: 1px solid #30363d; display: flex; align-items: center; justify-content: center; color: #444;
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
-        .step-card h3 { color: #58a6ff; margin-bottom: 10px; }
-        .step-card p { color: #8b949e; font-size: 0.95rem; }
+        .media-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            border: 1px solid #30363d;
+        }
 
-        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } }
+        .step-card h3 {
+            color: #58a6ff;
+            margin-bottom: 10px;
+        }
+
+        .step-card p {
+            color: #8b949e;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -120,11 +253,11 @@
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#tutorial">Tutorial</a></li>
+            <li><a href="#about">About</a></li>
         </ul>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HOME SECTION -->
     <section class="page-section hero" id="home">
         <h1>Multimedia & Authoring</h1>
         <h3>Rotoscope and 3D Rendering</h3>
@@ -135,17 +268,24 @@
     <section class="page-section" id="portfolio">
         <h1 class="section-title">Featured Projects</h1>
         <div class="title-underline"></div>
+
         <div class="project-grid">
             <a href="#tutorial" class="project-card">
-                <div class="card-image"><img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000" alt="Rotoscope"></div>
+                <div class="card-image">
+                    <!-- Thumbnail of the EZ:STUDIO video -->
+                    <img src="https://img.youtube.com/vi/P56v_FpG8bA/maxresdefault.jpg" alt="Rotoscope">
+                </div>
                 <div class="card-content">
                     <h2>1-minute Video Rotoscope</h2>
                     <p style="color: #58a6ff; font-weight: bold; font-size: 0.8rem;">ROTOSCOPE</p>
-                    <p>Click to view the tutorial.</p>
+                    <p>Click here to view the tutorial.</p>
                 </div>
             </a>
+
             <div class="project-card">
-                <div class="card-image"><img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000" alt="Solar"></div>
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000" alt="Solar">
+                </div>
                 <div class="card-content">
                     <h2>3D Solar System</h2>
                     <p style="color: #58a6ff; font-weight: bold; font-size: 0.8rem;">3D RENDERING</p>
@@ -162,12 +302,12 @@
 
         <div class="tutorial-grid">
             
-            <!-- STEP 1: CHUNG HA - GOTTA GO -->
+            <!-- STEP 1: EZ STUDIO VIDEO -->
             <div class="step-card">
                 <div class="step-number">1</div>
                 <div class="video-container">
                     <iframe 
-                        src="https://www.youtube-nocookie.com/embed/HLO9_TAs_S0?rel=0&enablejsapi=1" 
+                        src="https://www.youtube-nocookie.com/embed/P56v_FpG8bA" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -175,7 +315,7 @@
                     </iframe>
                 </div>
                 <h3>Select Source Material</h3>
-                <p>Choose high-quality video with clear subject-background contrast. This choreography video is ideal for rotoscoping because of the simple studio background.</p>
+                <p>Choose high-quality video with clear subject-background contrast. This studio video is ideal for rotoscoping because of the clean lighting and solid background.</p>
             </div>
 
             <!-- STEP 2 -->
