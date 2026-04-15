@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multimedia Portfolio</title>
     <style>
-        /* --- GENERAL STYLES --- */
+        /* --- CSS STYLING --- */
         html {
             scroll-behavior: smooth;
         }
@@ -195,14 +195,14 @@
             box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
         }
 
-        /* Video Styling */
+        /* Video Container */
         .video-container {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 ratio */
             height: 0;
             overflow: hidden;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             background: #000;
             border: 1px solid #30363d;
         }
@@ -215,9 +215,24 @@
             height: 100%;
         }
 
+        /* Link for if video gets blocked */
+        .video-link {
+            display: block;
+            text-align: center;
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.75rem;
+            margin-bottom: 15px;
+        }
+
+        .video-link:hover {
+            color: #58a6ff;
+            text-decoration: underline;
+        }
+
         .media-placeholder {
             width: 100%;
-            aspect-ratio: 16:9;
+            aspect-ratio: 16/9;
             background-color: #000;
             border-radius: 12px;
             margin-bottom: 20px;
@@ -257,7 +272,7 @@
         </ul>
     </nav>
 
-    <!-- HOME SECTION -->
+    <!-- HERO SECTION -->
     <section class="page-section hero" id="home">
         <h1>Multimedia & Authoring</h1>
         <h3>Rotoscope and 3D Rendering</h3>
@@ -301,18 +316,20 @@
 
         <div class="tutorial-grid">
             
-            <!-- STEP 1: Lisa Rhee Dance Cover -->
+            <!-- STEP 1: Sunghoon - Criminal Video -->
             <div class="step-card">
                 <div class="step-number">1</div>
                 <div class="video-container">
+                    <!-- Updated with Sunghoon's video ID -->
                     <iframe 
-                        src="https://www.youtube-nocookie.com/embed/Xp7B3Z59D0s?rel=0" 
+                        src="https://www.youtube-nocookie.com/embed/AitN8Y-y9pU?rel=0" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen>
                     </iframe>
                 </div>
+                <a href="https://www.youtube.com/watch?v=AitN8Y-y9pU" target="_blank" class="video-link">Video unavailable? Click here to watch on YouTube →</a>
                 <h3>Select Source Material</h3>
                 <p>Choose high-quality video with clear subject-background contrast and interesting movement patterns.</p>
             </div>
