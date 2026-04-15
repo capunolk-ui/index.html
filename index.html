@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multimedia Portfolio</title>
     <style>
-        /* --- CSS STYLING --- */
+        /* --- GENERAL STYLES --- */
         html {
             scroll-behavior: smooth;
         }
@@ -68,7 +68,7 @@
             padding: 100px 8%;
         }
 
-        /* Hero Section */
+        /* Hero Section (Home) */
         .hero {
             text-align: center;
             display: flex;
@@ -160,14 +160,6 @@
             margin-bottom: 5px;
         }
 
-        .category {
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: #58a6ff;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
         /* --- TUTORIAL SECTION --- */
         .tutorial-grid {
             display: grid;
@@ -210,7 +202,7 @@
             height: 0;
             overflow: hidden;
             border-radius: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             background: #000;
             border: 1px solid #30363d;
         }
@@ -223,22 +215,9 @@
             height: 100%;
         }
 
-        .fallback-link {
-            display: block;
-            text-align: center;
-            color: #8b949e;
-            text-decoration: none;
-            font-size: 0.75rem;
-            margin-bottom: 15px;
-        }
-
-        .fallback-link:hover {
-            color: #58a6ff;
-        }
-
         .media-placeholder {
             width: 100%;
-            aspect-ratio: 16/9;
+            aspect-ratio: 16:9;
             background-color: #000;
             border-radius: 12px;
             margin-bottom: 20px;
@@ -278,7 +257,7 @@
         </ul>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HOME SECTION -->
     <section class="page-section hero" id="home">
         <h1>Multimedia & Authoring</h1>
         <h3>Rotoscope and 3D Rendering</h3>
@@ -297,18 +276,18 @@
                 </div>
                 <div class="card-content">
                     <h2>1-minute Video Rotoscope</h2>
-                    <p class="category">ROTOSCOPE</p>
+                    <p style="color: #58a6ff; font-weight: bold; font-size: 0.8rem;">ROTOSCOPE</p>
                     <p>Click here to view the tutorial.</p>
                 </div>
             </a>
 
             <div class="project-card">
                 <div class="card-image">
-                    <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000" alt="Solar System">
+                    <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000" alt="Solar">
                 </div>
                 <div class="card-content">
                     <h2>3D Solar System</h2>
-                    <p class="category">3D RENDERING</p>
+                    <p style="color: #58a6ff; font-weight: bold; font-size: 0.8rem;">3D RENDERING</p>
                     <p>Realistic visual models of celestial bodies.</p>
                 </div>
             </div>
@@ -322,19 +301,18 @@
 
         <div class="tutorial-grid">
             
-            <!-- STEP 1: Hyunjin - Criminal Video -->
+            <!-- STEP 1: Lisa Rhee Dance Cover -->
             <div class="step-card">
                 <div class="step-number">1</div>
                 <div class="video-container">
                     <iframe 
-                        src="https://www.youtube-nocookie.com/embed/R9Z8BAnS87Y?rel=0" 
+                        src="https://www.youtube-nocookie.com/embed/Xp7B3Z59D0s?rel=0" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                         allowfullscreen>
                     </iframe>
                 </div>
-                <a href="https://www.youtube.com/watch?v=R9Z8BAnS87Y" target="_blank" class="fallback-link">Can't see video? Watch on YouTube →</a>
                 <h3>Select Source Material</h3>
                 <p>Choose high-quality video with clear subject-background contrast and interesting movement patterns.</p>
             </div>
@@ -355,10 +333,6 @@
                 <p>In After Effects, create a separate 5-second composition for each clip segment.</p>
             </div>
 
-        </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="#home" style="color: #58a6ff; text-decoration: none; font-size: 0.9rem;">↑ Back to Top</a>
         </div>
     </section>
 
