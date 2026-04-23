@@ -1,264 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multimedia Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multimedia Portfolio</title>
 
-    <style>
-        html { scroll-behavior: smooth; }
+<style>
+html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#0d1117;
+    color:white;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* NAV */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+    background:#161b22;
+    border-bottom:1px solid #30363d;
+}
+nav a{
+    color:#58a6ff;
+    text-decoration:none;
+    margin-left:20px;
+}
 
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0d1117;
-            color: white;
-            line-height: 1.6;
-        }
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 8%;
+    background:
+    linear-gradient(rgba(13,17,23,.85),rgba(13,17,23,.95)),
+    url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=1600") center/cover no-repeat;
+}
+.hero h1{font-size:4rem;color:#58a6ff}
+.hero h3{color:#79c0ff;margin:15px 0}
+.hero p{color:#8b949e;max-width:700px;margin:auto}
 
-        /* NAVIGATION */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background-color: #161b22;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #30363d;
-        }
+/* SECTIONS */
+.page-section{padding:100px 8%}
+.section-title{text-align:center;color:#58a6ff;font-size:2.5rem}
+.title-underline{
+    width:60px;height:4px;background:#58a6ff;
+    margin:10px auto 50px;border-radius:2px;
+}
 
-        .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #58a6ff;
-        }
+/* CARDS */
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:30px;
+}
+.project-card{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:15px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.3s;
+}
+.project-card:hover{
+    transform:translateY(-8px);
+    border-color:#58a6ff;
+}
+.card-image img{
+    width:100%;height:200px;object-fit:cover;opacity:.7
+}
+.card-content{padding:25px}
+.card-content h2{color:#58a6ff}
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
+/* TUTORIAL PAGE */
+#tutorialPage{display:none}
+.step{
+    margin-top:40px;
+    padding:30px;
+    border:1px solid #30363d;
+    border-radius:15px;
+    background:#161b22;
+}
+.video-container{
+    position:relative;
+    padding-bottom:56.25%;
+    height:0;
+    margin-top:20px;
+}
+.video-container iframe{
+    position:absolute;width:100%;height:100%;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: #c9d1d9;
-            font-size: 0.9rem;
-        }
-
-        .nav-links a:hover {
-            color: #58a6ff;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 0 8%;
-            background:
-                linear-gradient(rgba(13,17,23,0.85), rgba(13,17,23,0.95)),
-                url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=1600") center/cover no-repeat;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: #58a6ff;
-            margin-bottom: 10px;
-        }
-
-        .hero h3 {
-            font-size: 1.6rem;
-            color: #79c0ff;
-            margin-bottom: 25px;
-            font-weight: 400;
-        }
-
-        .hero p {
-            color: #8b949e;
-            max-width: 750px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin: auto;
-        }
-
-        /* SECTION TITLES */
-        .page-section {
-            padding: 100px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #58a6ff;
-            margin-bottom: 10px;
-        }
-
-        .title-underline {
-            width: 60px;
-            height: 4px;
-            background: #58a6ff;
-            margin: 0 auto 50px;
-            border-radius: 2px;
-        }
-
-        /* PROJECT GRID */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: #58a6ff;
-        }
-
-        .card-image img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            opacity: 0.7;
-        }
-
-        .card-content {
-            padding: 25px;
-        }
-
-        .card-content h2 {
-            color: #58a6ff;
-            margin-bottom: 5px;
-        }
-
-        /* TUTORIAL */
-        .tutorial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .step-card {
-            background-color: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 20px;
-            padding: 30px;
-        }
-
-        .step-number {
-            background-color: #58a6ff;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2.5rem; }
-        }
-    </style>
+/* BUTTON */
+.back-btn{
+    color:#58a6ff;
+    cursor:pointer;
+    margin-top:20px;
+    display:inline-block;
+}
+</style>
 </head>
 <body>
 
 <nav>
-    <div class="logo">🎨 Multimedia Portfolio</div>
-    <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#tutorial">Tutorial</a></li>
-    </ul>
+    <div>🎨 Multimedia Portfolio</div>
+    <div>
+        <a onclick="showHome()">Home</a>
+    </div>
 </nav>
 
-<section class="hero" id="home">
+<!-- HOME PAGE -->
+<div id="homePage">
+
+<section class="hero">
     <div>
         <h1>Multimedia & Authoring</h1>
         <h3>Rotoscope and 3D Rendering</h3>
-        <p>
-            Exploring the art of rotoscoping and the realism of 3D rendering to create
-            compelling visual narratives. Merging creativity with technology to bring
-            motion and dimension to digital storytelling.
-        </p>
+        <p>Exploring the art of rotoscoping and the realism of 3D rendering.</p>
     </div>
 </section>
 
-<section class="page-section" id="portfolio">
+<section class="page-section">
     <h1 class="section-title">Featured Projects</h1>
     <div class="title-underline"></div>
 
     <div class="project-grid">
-        <div class="project-card">
+        <div class="project-card" onclick="showTutorial()">
             <div class="card-image">
                 <img src="https://img.youtube.com/vi/v6l8OnXDgYM/maxresdefault.jpg">
             </div>
             <div class="card-content">
                 <h2>1-minute Video Rotoscope</h2>
-                <p>Click to view tutorial.</p>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?q=80&w=1000">
-            </div>
-            <div class="card-content">
-                <h2>3D Solar System</h2>
-                <p>Realistic visual models of celestial bodies.</p>
+                <p>Click to view tutorial</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="page-section" id="tutorial">
-    <h1 class="section-title">Step-by-Step Tutorial</h1>
+</div>
+
+<!-- TUTORIAL PAGE -->
+<div id="tutorialPage" class="page-section">
+    <span class="back-btn" onclick="showHome()">← Back to Home</span>
+
+    <h1 class="section-title">Rotoscope Tutorial</h1>
     <div class="title-underline"></div>
 
-    <div class="tutorial-grid">
-        <div class="step-card">
-            <div class="step-number">1</div>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/v6l8OnXDgYM" allowfullscreen></iframe>
-            </div>
-            <h3>Select Source Material</h3>
+    <div class="step">
+        <h2>Step 1 — Choose Source Video</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/v6l8OnXDgYM" allowfullscreen></iframe>
         </div>
     </div>
-</section>
+
+    <div class="step">
+        <h2>Step 2 — Cut into 5s clips</h2>
+        <p>Use CapCut to divide the footage into manageable parts.</p>
+    </div>
+
+    <div class="step">
+        <h2>Step 3 — Trace in After Effects</h2>
+        <p>Create compositions and rotoscope frame by frame.</p>
+    </div>
+</div>
+
+<script>
+function showTutorial(){
+    document.getElementById("homePage").style.display="none";
+    document.getElementById("tutorialPage").style.display="block";
+    window.scrollTo(0,0);
+}
+function showHome(){
+    document.getElementById("tutorialPage").style.display="none";
+    document.getElementById("homePage").style.display="block";
+    window.scrollTo(0,0);
+}
+</script>
 
 </body>
 </html>
