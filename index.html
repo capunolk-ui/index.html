@@ -270,11 +270,44 @@
         .week-card { background: #0b0f16; border-radius: 1rem; padding: 0.8rem 1rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid #1f2532; }
         .play-placeholder { background: #171d2b; width: 34px; height: 34px; border-radius: 40px; display: flex; align-items: center; justify-content: center; color: #5c73ad; border: 1px solid #2d374f; }
         footer small { display: block; margin-top: 1rem; }
+        .author-name {
+            font-weight: 600;
+            background: #0f121b;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #1f2a3e;
+            color: #7aa2f7;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.9rem;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            margin-bottom: 1rem;
+            border: 1px solid #2d3a5e;
+        }
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #6c7a9e;
+            margin-top: 1rem;
+        }
+        .video-placeholder-text {
+            color: #5c6e9c;
+            font-weight: 500;
+        }
+        .section-caption {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
 
-<!-- NAVIGATION BAR (exactly as reference: Home, Portfolio, About) -->
+<!-- NAVIGATION BAR -->
 <div class="navbar">
     <div class="logo">🎨 Multimedia Portfolio</div>
     <div class="nav-links">
@@ -284,7 +317,7 @@
     </div>
 </div>
 
-<!-- ========== HOMEPAGE (exactly as described in the image) ========== -->
+<!-- ========== HOMEPAGE ========== -->
 <div id="homePage">
     <section class="hero">
         <div class="hero-content">
@@ -311,7 +344,7 @@
                 </div>
             </div>
 
-            <!-- 1-minute Video Rotoscope Card (click to open tutorial) -->
+            <!-- 1-minute Video Rotoscope Card -->
             <div class="project-card" id="cardRotoscope">
                 <div class="card-media">
                     <div style="display: flex; align-items:center; justify-content:center; height:200px; background:#0a0c10; font-size:3rem;">🎞️✏️</div>
@@ -325,17 +358,17 @@
         </div>
     </section>
     <footer>
-        <span>© 2025 Emmanuel C. Capuno — BSIT-S-T-2A. All rights reserved.</span>
+        <span>© 2026 Emmanuel C. Capuno — BSIT-S-T-2A. All rights reserved.</span>
     </footer>
 </div>
 
-<!-- ========== TUTORIAL PAGE (hidden until click, layout preserved from earlier request) ========== -->
+<!-- ========== TUTORIAL PAGE ========== -->
 <div id="tutorialPage" class="container" style="max-width:1200px; margin:0 auto; padding:2rem 1rem;">
     <div class="back-home-btn" id="backToHomeBtn">← Back to Home</div>
 
     <!-- Hero / rotoscope header -->
     <div class="hero-section">
-        <div class="badge" style="background:#1f2a3e; color:#7aa2f7; display:inline-block; padding:0.25rem 0.9rem; border-radius:30px;">✦ ROTOSCOPE PROJECT</div>
+        <div class="badge">✦ ROTOSCOPE PROJECT</div>
         <h1 style="font-size:2.5rem; margin-top:0.5rem;">1-Minute Rotoscope Video</h1>
         <p style="color:#a9b7d4;">A frame-by-frame animation created using the tracing technique with an auto-brush tool in Adobe After Effects.</p>
         <div class="tools-row">
@@ -344,10 +377,10 @@
             <span class="tool-badge">📱 CapCut</span>
         </div>
         <div class="meta-row">
-            <div class="author-name" style="font-weight:600;">🎨 Emmanuel C. Capuno</div>
+            <div class="author-name">🎨 Emmanuel C. Capuno</div>
             <div class="hot-like"><span>🔥 HOT</span><span>👍 LIKE</span><a href="#" id="ytPlaceholder" style="color:#7aa2f7; margin-left:0.8rem;">Watch on YouTube →</a></div>
         </div>
-        <div class="disclaimer" style="font-size:0.75rem; color:#6c7a9e; margin-top:1rem;">Disclaimer: This video was created for academic purposes only.</div>
+        <div class="disclaimer">Disclaimer: This video was created for academic purposes only.</div>
     </div>
 
     <!-- Rotoscope video blank placeholder -->
@@ -361,7 +394,7 @@
     <div class="two-col-grid">
         <!-- steps -->
         <div class="tutorial-steps">
-            <div class="section-caption" style="font-size:1.8rem; font-weight:700; margin-bottom:1rem;">📋 Step-by-Step Tutorial</div>
+            <div class="section-caption">📋 Step-by-Step Tutorial</div>
 
             <div class="step-item">
                 <div class="step-number">1</div>
@@ -385,27 +418,27 @@
             <div class="step-item"><div class="step-number">8</div><div class="step-title">✍️ Edit Lyrics & Background</div><div class="step-desc">Use Adobe Premiere Pro to add lyrics, sync them with the audio, and change background colors to enhance visual appeal.</div><div class="step-media-placeholder">📝 [Lyrics & background editing preview — coming soon]</div></div>
         </div>
 
-        <!-- Weekly progress sidebar -->
+        <!-- Weekly progress sidebar - updated with Emmanuel C. Capuno name -->
         <div class="weekly-progress">
-            <div class="section-caption" style="font-size:1.8rem; font-weight:700;">📅 Weekly Progress</div>
+            <div class="section-caption">📅 Weekly Progress</div>
             <div class="progress-week-list">
-                <div class="week-card"><div><h4>Week 1</h4><p>Rotoscope Pt.1 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 2</h4><p>Mary Pauline · No subscribers</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 3</h4><p>Rotoscope Pt.3 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 4</h4><p>Rotoscope Pt.4 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 5</h4><p>Rotoscope Pt.5 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 6</h4><p>Rotoscope Pt.6 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 7</h4><p>Rotoscope Pt.7 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 8</h4><p>Rotoscope Pt.8 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 9</h4><p>Rotoscope Pt.9 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 10</h4><p>Rotoscope Pt.10 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 11</h4><p>Rotoscope Pt.11 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 12</h4><p>Rotoscope Pt.12 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 1</h4><p>Rotoscope Pt.1 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 2</h4><p>Rotoscope Pt.2 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 3</h4><p>Rotoscope Pt.3 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 4</h4><p>Rotoscope Pt.4 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 5</h4><p>Rotoscope Pt.5 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 6</h4><p>Rotoscope Pt.6 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 7</h4><p>Rotoscope Pt.7 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 8</h4><p>Rotoscope Pt.8 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 9</h4><p>Rotoscope Pt.9 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 10</h4><p>Rotoscope Pt.10 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 11</h4><p>Rotoscope Pt.11 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div><h4>Week 12</h4><p>Rotoscope Pt.12 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
             </div>
             <div style="margin-top: 1rem; font-size:0.7rem; text-align:center; color:#58658b;">⬤ Weekly video exports will appear here</div>
         </div>
     </div>
-    <footer><small>© 2025 Emmanuel C. Capuno — BSIT-S-T-2A. All rights reserved.</small></footer>
+    <footer><small>© 2026 Emmanuel C. Capuno — BSIT-S-T-2A. All rights reserved.</small></footer>
 </div>
 
 <script>
@@ -429,7 +462,6 @@
         homePage.style.display = 'none';
         tutorialPage.style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        // optional: reload video attempt
         const vid = tutorialPage.querySelector('video');
         if(vid && vid.paused) vid.play().catch(e=>console.log("autoplay blocked"));
     }
@@ -437,7 +469,6 @@
     // Navigation
     navHome.addEventListener('click', showHome);
     navPortfolio.addEventListener('click', () => {
-        // scroll to featured projects section on homepage
         if(homePage.style.display !== 'none') {
             document.querySelector('.page-section').scrollIntoView({ behavior: 'smooth' });
         } else {
@@ -451,11 +482,8 @@
 
     // Rotoscope card click -> tutorial
     rotoscopeCard.addEventListener('click', showTutorial);
-
-    // Back button
     backBtn.addEventListener('click', showHome);
 
-    // YouTube placeholder
     if(ytPlaceholder) {
         ytPlaceholder.addEventListener('click', (e) => {
             e.preventDefault();
@@ -463,7 +491,6 @@
         });
     }
 
-    // For 3D Solar System card, simple info
     const card3d = document.getElementById('card3dSolar');
     if(card3d) {
         card3d.addEventListener('click', () => {
