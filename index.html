@@ -1,347 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Multimedia Portfolio | Rotoscope & 3D</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotoscope Tutorial | Emmanuel C. Capuno</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-html{scroll-behavior:smooth}
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-    font-family:'Segoe UI', system-ui, -apple-system, 'Roboto', sans-serif;
-    background:#0d1117;
-    color:#e6edf3;
-}
+        body {
+            background: #0a0c10;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            color: #eef2ff;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
 
-nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 8%;
-    background:#161b22;
-    border-bottom:1px solid #30363d;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-nav div:first-child{
-    font-weight:600;
-    font-size:1.4rem;
-    background: linear-gradient(135deg, #58a6ff, #a371f7);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-}
-nav a{
-    color:#58a6ff;
-    text-decoration:none;
-    margin-left:20px;
-    font-weight:500;
-    cursor:pointer;
-    transition:0.2s;
-}
-nav a:hover{ text-decoration:underline;}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-.hero{
-    min-height:85vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:0 8%;
-    background:
-    linear-gradient(125deg, rgba(13,17,23,0.88), rgba(13,17,23,0.96)),
-    url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=1600") center/cover no-repeat;
-    border-bottom:1px solid #21262d;
-}
-.hero h1{font-size:4rem;color:#58a6ff; letter-spacing:-0.02em;}
-.hero h3{color:#79c0ff;margin:15px 0; font-weight:400;}
-.hero p{color:#8b949e;max-width:700px;margin:auto; font-size:1.1rem;}
+        /* header / hero section */
+        .hero-section {
+            background: linear-gradient(135deg, #10141c 0%, #0b0e14 100%);
+            border-radius: 2rem;
+            padding: 2rem 2rem 2rem 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #252a34;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+        }
 
-.page-section{padding:80px 8%}
-.section-title{text-align:center;color:#58a6ff;font-size:2.5rem; font-weight:600;}
-.title-underline{
-    width:70px;height:4px;background:#58a6ff;
-    margin:12px auto 50px;border-radius:4px;
-}
+        .badge {
+            display: inline-block;
+            background: #1f2a3e;
+            color: #7aa2f7;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.9rem;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            margin-bottom: 1rem;
+            border: 1px solid #2d3a5e;
+        }
 
-.project-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
-    gap:35px;
-    max-width:1400px;
-    margin:0 auto;
-}
-.project-card{
-    background:#161b22;
-    border:1px solid #30363d;
-    border-radius:20px;
-    overflow:hidden;
-    transition:all 0.25s ease;
-    box-shadow:0 8px 20px rgba(0,0,0,0.3);
-}
-.card-video{
-    background:#0a0c10;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
-}
-.card-video video{
-    width:100%;
-    height:260px;
-    object-fit:cover;
-    border-bottom:1px solid #21262d;
-    background:#000;
-}
-.card-content{padding:24px 26px 30px;}
-.card-content h2{color:#58a6ff; margin-bottom:12px; font-size:1.6rem;}
-.card-content p{color:#b1bac4; line-height:1.5;}
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(120deg, #ffffff, #90a9ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 0.75rem;
+        }
 
-/* tutorial page */
-#tutorialPage{display:none}
-.step{
-    margin-top:45px;
-    padding:28px 32px;
-    border:1px solid #2d333b;
-    border-radius:24px;
-    background:#161b22;
-    box-shadow:0 4px 12px rgba(0,0,0,0.2);
-}
-.step h2{
-    font-size:1.8rem;
-    color:#79c0ff;
-    margin-bottom:18px;
-}
-.step p{
-    font-size:1.05rem;
-    line-height:1.5;
-    color:#c9d1d9;
-    margin-bottom:20px;
-}
-.video-container{
-    position:relative;
-    padding-bottom:56.25%;
-    height:0;
-    margin:20px 0 12px;
-    border-radius:20px;
-    overflow:hidden;
-    background:#000;
-    box-shadow:0 10px 25px -5px rgba(0,0,0,0.5);
-}
-.video-container video{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    border:0;
-    object-fit:contain;
-    background:#000;
-}
-.local-video-note{
-    background:#1e2a3a;
-    padding:12px 20px;
-    border-radius:14px;
-    margin-top:15px;
-    border-left:4px solid #58a6ff;
-    color:#adbac7;
-}
-.step-list{
-    margin:15px 0 0 22px;
-    color:#c9d1d9;
-}
-.step-list li{
-    margin:8px 0;
-}
-.back-btn{
-    color:#58a6ff;
-    cursor:pointer;
-    margin-bottom:30px;
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    font-weight:500;
-    font-size:1.1rem;
-    background:#21262d;
-    padding:8px 18px;
-    border-radius:40px;
-    transition:0.2s;
-    border:1px solid #30363d;
-}
-.back-btn:hover{
-    background:#2d3748;
-    border-color:#58a6ff;
-    transform:translateX(-4px);
-}
-.footer-note{
-    text-align:center;
-    padding:30px 8% 20px;
-    border-top:1px solid #21262d;
-    color:#6e7681;
-    font-size:0.85rem;
-}
-.filename-hint{
-    background:#0d1117;
-    padding:8px 12px;
-    border-radius:10px;
-    font-family:monospace;
-    font-size:0.8rem;
-    color:#58a6ff;
-    margin-top:10px;
-    text-align:center;
-}
-@media (max-width:680px){
-    .hero h1{font-size:2.5rem;}
-    .section-title{font-size:1.9rem;}
-    .step{padding:18px;}
-    .page-section{padding:50px 5%;}
-}
-</style>
+        .hero-desc {
+            color: #a9b7d4;
+            font-size: 1.1rem;
+            max-width: 80%;
+            margin-bottom: 1.5rem;
+        }
+
+        .tools-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .tool-badge {
+            background: #1a1e2a;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid #2d3548;
+            color: #b9c7f0;
+        }
+
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 1.8rem;
+            padding-top: 1rem;
+            border-top: 1px solid #252a34;
+        }
+
+        .author-name {
+            font-weight: 600;
+            background: #0f121b;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+
+        .hot-like {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hot-like span {
+            background: #1f212e;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .watch-link {
+            color: #7aa2f7;
+            text-decoration: none;
+            border-bottom: 1px dashed #5a73b0;
+        }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #6c7a9e;
+            margin-top: 1rem;
+        }
+
+        /* video placeholder (blank now, but structure ready) */
+        .video-showcase {
+            background: #0e1119;
+            border-radius: 1.5rem;
+            border: 2px dashed #2e3a55;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2rem 0 1rem;
+            transition: 0.2s;
+        }
+
+        .video-placeholder-text {
+            color: #5c6e9c;
+            font-weight: 500;
+        }
+
+        .video-placeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* layout two columns for tutorial + weekly progress */
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 800px) {
+            .two-col-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-desc {
+                max-width: 100%;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* tutorial steps */
+        .tutorial-steps {
+            background: #0d1117;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #242a35;
+        }
+
+        .section-caption {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-item {
+            margin-bottom: 2.2rem;
+            background: #0b0f16;
+            border-radius: 1.25rem;
+            padding: 1rem 1.2rem;
+            transition: 0.1s;
+            border: 1px solid #1c212c;
+        }
+
+        .step-number {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #3b5b9b;
+            margin-right: 0.75rem;
+            display: inline-block;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0.5rem 0 0.6rem;
+            color: #cbd5ff;
+        }
+
+        .step-desc {
+            color: #b1c2e6;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-media-placeholder {
+            background: #11141f;
+            border-radius: 1rem;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px dashed #2e3b4e;
+            margin-top: 0.8rem;
+            color: #5e6f97;
+            font-size: 0.85rem;
+        }
+
+        /* weekly progress section */
+        .weekly-progress {
+            background: #0d1117;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #242a35;
+            height: fit-content;
+        }
+
+        .progress-week-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .week-card {
+            background: #0b0f16;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #1f2532;
+            transition: 0.1s;
+        }
+
+        .week-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .week-info p {
+            font-size: 0.8rem;
+            color: #8795b9;
+        }
+
+        .play-placeholder {
+            background: #171d2b;
+            width: 34px;
+            height: 34px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            cursor: default;
+            color: #5c73ad;
+            border: 1px solid #2d374f;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 1.5rem 0.5rem;
+            border-top: 1px solid #1e2432;
+            color: #6c7aa3;
+            font-size: 0.8rem;
+        }
+
+        hr {
+            border-color: #252a34;
+            margin: 0.5rem 0;
+        }
+
+        /* small adjustments */
+        .inline-code {
+            background: #131824;
+            padding: 0.1rem 0.4rem;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+
+        .rotoscope-video-blank {
+            margin: 1rem 0 0.5rem;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <!-- Header / Hero block exactly like reference design -->
+    <div class="hero-section">
+        <div class="badge">✦ ROTOSCOPE PROJECT</div>
+        <h1 class="hero-title">1-Minute Rotoscope Video</h1>
+        <p class="hero-desc">A frame-by-frame animation created using the tracing technique with an auto-brush tool in Adobe After Effects.</p>
+        
+        <div class="tools-row">
+            <span class="tool-badge">🎬 Adobe After Effects</span>
+            <span class="tool-badge">✂️ Adobe Premiere Pro</span>
+            <span class="tool-badge">📱 CapCut</span>
+        </div>
 
-<nav>
-    <div>🎬 Multimedia & Authoring</div>
-    <div>
-        <a onclick="showHome()">🏠 Home</a>
-    </div>
-</nav>
-
-<!-- HOME PAGE -->
-<div id="homePage">
-
-<section class="hero">
-    <div>
-        <h1>Rotoscope & 3D Fusion</h1>
-        <h3>Frame-by-frame magic + immersive rendering</h3>
-        <p>Professional rotoscoping workflow | Step-by-step guide using After Effects & modern tools</p>
-    </div>
-</section>
-
-<section class="page-section">
-    <h1 class="section-title">Featured Projects</h1>
-    <div class="title-underline"></div>
-
-    <div class="project-grid">
-        <!-- PROJECT CARD WITH YOUR VIDEO SHOWING DIRECTLY -->
-        <div class="project-card" onclick="showTutorial()">
-            <div class="card-video">
-                <video id="homeVideo" muted loop playsinline>
-                    <source src="source_video.mp4" type="video/mp4">
-                    Your browser does not support video. Please name your MP4 file: source_video.mp4
-                </video>
+        <div class="meta-row">
+            <div class="author-name">🎨 Emmanuel C. Capuno</div>
+            <div class="hot-like">
+                <span>🔥 HOT</span>
+                <span>👍 LIKE</span>
+                <a href="#" class="watch-link" style="cursor:pointer;">Watch on YouTube →</a>
             </div>
-            <div class="card-content">
-                <h2>🎞️ 1-minute Video Rotoscope</h2>
-                <p>Complete rotoscoping pipeline — from source selection to final line art. Click to start tutorial.</p>
-                <div class="filename-hint">
-                    📹 Your video: source_video.mp4
+        </div>
+        <div class="disclaimer">Disclaimer: This video was created for academic purposes only.</div>
+    </div>
+
+    <!-- ROTOSCOPE VIDEO BLANK (blank as requested, just layout) -->
+    <div class="video-showcase" id="rotoscopeVideoBlank">
+        <div class="video-placeholder-icon">🎬</div>
+        <div class="video-placeholder-text">Rotoscope Video Preview (Placeholder)</div>
+        <div style="font-size:0.8rem; margin-top:8px;">⬤ Your final 1-min rotoscope animation will appear here</div>
+    </div>
+
+    <!-- TWO COLUMN LAYOUT: STEPS (LEFT) + WEEKLY PROGRESS (RIGHT) -->
+    <div class="two-col-grid">
+        <!-- LEFT: STEP-BY-STEP TUTORIAL (with step texts copied exactly, and blank media slots) -->
+        <div class="tutorial-steps">
+            <div class="section-caption">
+                <span>📋</span> Step-by-Step Tutorial
+            </div>
+
+            <!-- STEP 1: with YOUR VIDEO (mp4 local) -->
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <div class="step-title">🎥 Select Source Material</div>
+                <div class="step-desc">Choose high-quality video with clear subject-background contrast and interesting movement patterns.</div>
+                <!-- YOUR VIDEO PLACEHOLDER (KEEP YOUR VIDEO HERE) using local mp4 source_video.mp4 -->
+                <div class="step-media-placeholder" style="background:#0c1020; padding: 0.5rem;">
+                    <video width="100%" style="border-radius: 14px; max-height: 200px; background:#000;" controls>
+                        <source src="source_video.mp4" type="video/mp4">
+                        Your browser does not support video. Place "source_video.mp4" in the same folder.
+                    </video>
+                    <div style="font-size:0.7rem; margin-top:8px; color:#7a8bc2;">📁 Your source video (Step 1 placeholder)</div>
                 </div>
             </div>
-        </div>
 
-        <!-- BONUS 3D CARD -->
-        <div class="project-card" onclick="alert('3D rendering showcase coming soon! Check out rotoscope tutorial first.')">
-            <div class="card-video">
-                <img src="https://images.unsplash.com/photo-1618172193622-ae2d0258e9d3?w=600&auto=format" alt="3d render" style="width:100%; height:260px; object-fit:cover;">
+            <!-- STEP 2 -->
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-title">✂️ Cut the Video into 5-Second Clips</div>
+                <div class="step-desc">Use CapCut to split the selected video into 5-second segments for easier editing.</div>
+                <div class="step-media-placeholder">🖼️ [Image Preview Placeholder] — Clip splitting demo will appear here</div>
             </div>
-            <div class="card-content">
-                <h2>✨ 3D Photorealistic Render</h2>
-                <p>Cinematic lighting & procedural materials (Blender / Maya preview).</p>
+
+            <!-- STEP 3 -->
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-title">🆕 Create a New Composition</div>
+                <div class="step-desc">In After Effects, create a separate 5-second composition for each clip segment.</div>
+                <div class="step-media-placeholder">🎞️ [Screenshot / GIF Placeholder] — AE composition settings preview</div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <div class="step-title">⚙️ Render All Compositions</div>
+                <div class="step-desc">Export each 5-second composition through the Render Queue with consistent settings.</div>
+                <div class="step-media-placeholder">📀 [Render settings preview — will be added soon]</div>
+            </div>
+
+            <!-- STEP 5 -->
+            <div class="step-item">
+                <div class="step-number">5</div>
+                <div class="step-title">🖌️ Trace Each Layer</div>
+                <div class="step-desc">Isolate the subject into separate layers (shirt, pants, body, hair, shoes) using the Roto Brush Tool. Freeze each layer to edit others independently.</div>
+                <div class="step-media-placeholder">✏️ [Rotoscope tracing breakdown — image coming soon]</div>
+            </div>
+
+            <!-- STEP 6 -->
+            <div class="step-item">
+                <div class="step-number">6</div>
+                <div class="step-title">🎨 Add Fill Colors to Layers</div>
+                <div class="step-desc">Apply solid color fills to each isolated layer (shirt, pants, hair, etc.) to prepare for stylization.</div>
+                <div class="step-media-placeholder">🌈 [Color fill preview / layer styling example — placeholder]</div>
+            </div>
+
+            <!-- STEP 7 -->
+            <div class="step-item">
+                <div class="step-number">7</div>
+                <div class="step-title">📁 Compile All 5-Second Clips</div>
+                <div class="step-desc">Combine all clips in CapCut, add audio, and export in mp4 format.</div>
+                <div class="step-media-placeholder">🎵 [Audio syncing + compilation placeholder graphic]</div>
+            </div>
+
+            <!-- STEP 8 -->
+            <div class="step-item">
+                <div class="step-number">8</div>
+                <div class="step-title">✍️ Edit Lyrics & Background</div>
+                <div class="step-desc">Use Adobe Premiere Pro to add lyrics, sync them with the audio, and change background colors to enhance visual appeal.</div>
+                <div class="step-media-placeholder">📝 [Lyrics & background editing preview — coming soon]</div>
             </div>
         </div>
-    </div>
-</section>
 
-<div class="footer-note">
-    🎯 Your video plays right here on the home page — click the card to view full tutorial steps
-</div>
-</div>
-
-<!-- TUTORIAL PAGE (keep for full steps) -->
-<div id="tutorialPage" class="page-section">
-    <span class="back-btn" onclick="showHome()">← Back to Home</span>
-
-    <h1 class="section-title">🎨 Rotoscope Masterclass</h1>
-    <div class="title-underline"></div>
-
-    <div class="step">
-        <h2>📹 Step 1 — Your Source Video</h2>
-        <div class="video-container">
-            <video controls>
-                <source src="source_video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-        <div class="local-video-note">
-            ✅ This is your original footage. Watch it carefully to plan your rotoscope strategy.
+        <!-- RIGHT: WEEKLY PROGRESS (exactly as provided in the reference, all weeks 1 to 12, video thumbnails blank) -->
+        <div class="weekly-progress">
+            <div class="section-caption">
+                <span>📅</span> Weekly Progress
+            </div>
+            <div class="progress-week-list">
+                <!-- Week 1-12 exactly as described, each with blank video placeholder -->
+                <div class="week-card"><div class="week-info"><h4>Week 1</h4><p>Rotoscope Pt.1 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 2</h4><p>Mary Pauline · No subscribers</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 3</h4><p>Rotoscope Pt.3 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 4</h4><p>Rotoscope Pt.4 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 5</h4><p>Rotoscope Pt.5 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 6</h4><p>Rotoscope Pt.6 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 7</h4><p>Rotoscope Pt.7 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 8</h4><p>Rotoscope Pt.8 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 9</h4><p>Rotoscope Pt.9 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 10</h4><p>Rotoscope Pt.10 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 11</h4><p>Rotoscope Pt.11 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+                <div class="week-card"><div class="week-info"><h4>Week 12</h4><p>Rotoscope Pt.12 — Mary Pauline</p></div><div class="play-placeholder">▶️</div></div>
+            </div>
+            <div style="margin-top: 1.2rem; font-size: 0.75rem; text-align: center; color:#58658b;">⬤ Each video placeholder — final exports will appear here</div>
         </div>
     </div>
 
-    <div class="step">
-        <h2>✂️ Step 2 — Cut into 5s clips (CapCut / Premiere)</h2>
-        <p>Break down your 1‑minute source into 5‑second manageable segments. This reduces render complexity and makes frame‑by‑frame corrections easier.</p>
-        <ul class="step-list">
-            <li>🔹 Import original video into CapCut (or any NLE).</li>
-            <li>🔹 Use split tool at every 5‑second interval → export as individual clips.</li>
-            <li>🔹 Keep consistent naming: "shot_01_rotoscope.mov", "shot_02.mov".</li>
-            <li>🔹 Why 5 seconds? Smooth workflow in After Effects, easier retracing, and memory efficient.</li>
-        </ul>
-    </div>
-
-    <div class="step">
-        <h2>🖌️ Step 3 — Trace in After Effects (Frame‑by‑frame mastery)</h2>
-        <p>Launch Adobe After Effects, import your 5s clips. Use the <strong>Roto Brush + Refine Edge</strong> tool for initial masks, then manual path refinement for crisp lines.</p>
-        <ul class="step-list">
-            <li>🎯 <strong>Create comp</strong> at same frame rate as source (24fps / 30fps).</li>
-            <li>🎯 Apply Roto Brush → paint green stroke on subject, hold Alt to remove background.</li>
-            <li>🎯 For artistic rotoscope: Use <strong>Stroke</strong> effect or animate paths manually.</li>
-            <li>🎯 Frame blending & onion skinning ensures smooth motion.</li>
-        </ul>
-    </div>
-
-    <div class="step">
-        <h2>🎬 Step 4 — Composite & Export Final Render</h2>
-        <p>Combine your rotoscoped clips into a full 1‑minute sequence. Add stylistic backgrounds, glows, or overlay with original video for mixed aesthetics.</p>
-        <ul class="step-list">
-            <li>✅ Layer rotoscoped subject over dynamic gradient or abstract texture.</li>
-            <li>✅ Use Adjustment Layers for color grading.</li>
-            <li>✅ Export via Media Encoder: H.264 for web.</li>
-        </ul>
-    </div>
+    <!-- FOOTER with correct name and all rights reserved -->
+    <footer>
+        © 2025 Emmanuel C. Capuno — BSIT-S-T-2A. All rights reserved.
+    </footer>
 </div>
 
+<!-- optional small script to handle video fallback hint -->
 <script>
-function showTutorial(){
-    document.getElementById("homePage").style.display = "none";
-    document.getElementById("tutorialPage").style.display = "block";
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-function showHome(){
-    document.getElementById("tutorialPage").style.display = "none";
-    document.getElementById("homePage").style.display = "block";
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-    // Auto-play home video when returning (optional)
-    const homeVideo = document.getElementById("homeVideo");
-    if(homeVideo) {
-        homeVideo.play().catch(e => console.log("user interaction needed"));
-    }
-}
-
-// Auto-play video in home page when visible
-window.addEventListener('DOMContentLoaded', () => {
-    showHome();
-    const homeVideo = document.getElementById("homeVideo");
-    if(homeVideo) {
-        // attempt autoplay muted (browsers allow muted autoplay)
-        homeVideo.muted = true;
-        homeVideo.play().catch(e => console.log("click to play video"));
-    }
-});
+    (function() {
+        // just to show a console hint about the local video file
+        const videoEl = document.querySelector('video');
+        if(videoEl) {
+            videoEl.addEventListener('error', function(e) {
+                console.warn('Local video not found. Please place source_video.mp4 in the same directory as this HTML file.');
+            });
+        }
+    })();
 </script>
-
 </body>
 </html>
