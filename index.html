@@ -68,7 +68,7 @@ nav a:hover{ text-decoration:underline;}
 
 .project-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
     gap:35px;
     max-width:1400px;
     margin:0 auto;
@@ -78,28 +78,28 @@ nav a:hover{ text-decoration:underline;}
     border:1px solid #30363d;
     border-radius:20px;
     overflow:hidden;
-    cursor:pointer;
     transition:all 0.25s ease;
     box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
-.project-card:hover{
-    transform:translateY(-8px);
-    border-color:#58a6ff;
-}
-.card-image{
+.card-video{
     background:#0a0c10;
     display:flex;
     justify-content:center;
     align-items:center;
+    position:relative;
 }
-.card-image img{
-    width:100%;height:210px;object-fit:cover;
+.card-video video{
+    width:100%;
+    height:260px;
+    object-fit:cover;
     border-bottom:1px solid #21262d;
+    background:#000;
 }
 .card-content{padding:24px 26px 30px;}
 .card-content h2{color:#58a6ff; margin-bottom:12px; font-size:1.6rem;}
 .card-content p{color:#b1bac4; line-height:1.5;}
 
+/* tutorial page */
 #tutorialPage{display:none}
 .step{
     margin-top:45px;
@@ -130,7 +130,6 @@ nav a:hover{ text-decoration:underline;}
     background:#000;
     box-shadow:0 10px 25px -5px rgba(0,0,0,0.5);
 }
-.video-container iframe,
 .video-container video{
     position:absolute;
     top:0;
@@ -138,8 +137,6 @@ nav a:hover{ text-decoration:underline;}
     width:100%;
     height:100%;
     border:0;
-}
-video{
     object-fit:contain;
     background:#000;
 }
@@ -150,6 +147,13 @@ video{
     margin-top:15px;
     border-left:4px solid #58a6ff;
     color:#adbac7;
+}
+.step-list{
+    margin:15px 0 0 22px;
+    color:#c9d1d9;
+}
+.step-list li{
+    margin:8px 0;
 }
 .back-btn{
     color:#58a6ff;
@@ -177,6 +181,16 @@ video{
     border-top:1px solid #21262d;
     color:#6e7681;
     font-size:0.85rem;
+}
+.filename-hint{
+    background:#0d1117;
+    padding:8px 12px;
+    border-radius:10px;
+    font-family:monospace;
+    font-size:0.8rem;
+    color:#58a6ff;
+    margin-top:10px;
+    text-align:center;
 }
 @media (max-width:680px){
     .hero h1{font-size:2.5rem;}
@@ -211,18 +225,27 @@ video{
     <div class="title-underline"></div>
 
     <div class="project-grid">
+        <!-- PROJECT CARD WITH YOUR VIDEO SHOWING DIRECTLY -->
         <div class="project-card" onclick="showTutorial()">
-            <div class="card-image">
-                <img src="https://i.ytimg.com/vi/qiG-VQhkGNE/maxresdefault.jpg" alt="rotoscope tutorial preview">
+            <div class="card-video">
+                <video id="homeVideo" muted loop playsinline>
+                    <source src="source_video.mp4" type="video/mp4">
+                    Your browser does not support video. Please name your MP4 file: source_video.mp4
+                </video>
             </div>
             <div class="card-content">
-                <h2>🎞️ 1‑minute Video Rotoscope</h2>
+                <h2>🎞️ 1-minute Video Rotoscope</h2>
                 <p>Complete rotoscoping pipeline — from source selection to final line art. Click to start tutorial.</p>
+                <div class="filename-hint">
+                    📹 Your video: source_video.mp4
+                </div>
             </div>
         </div>
+
+        <!-- BONUS 3D CARD -->
         <div class="project-card" onclick="alert('3D rendering showcase coming soon! Check out rotoscope tutorial first.')">
-            <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1618172193622-ae2d0258e9d3?w=600&auto=format" alt="3d render abstract">
+            <div class="card-video">
+                <img src="https://images.unsplash.com/photo-1618172193622-ae2d0258e9d3?w=600&auto=format" alt="3d render" style="width:100%; height:260px; object-fit:cover;">
             </div>
             <div class="card-content">
                 <h2>✨ 3D Photorealistic Render</h2>
@@ -231,38 +254,36 @@ video{
         </div>
     </div>
 </section>
+
 <div class="footer-note">
-    🎯 Rotoscope tutorial includes your own video + step-by-step guide
+    🎯 Your video plays right here on the home page — click the card to view full tutorial steps
 </div>
 </div>
 
-<!-- TUTORIAL PAGE -->
+<!-- TUTORIAL PAGE (keep for full steps) -->
 <div id="tutorialPage" class="page-section">
     <span class="back-btn" onclick="showHome()">← Back to Home</span>
 
     <h1 class="section-title">🎨 Rotoscope Masterclass</h1>
     <div class="title-underline"></div>
 
-    <!-- STEP 1 - YOUR LOCAL MP4 VIDEO -->
     <div class="step">
-        <h2>📹 Step 1 — Choose Source Video</h2>
+        <h2>📹 Step 1 — Your Source Video</h2>
         <div class="video-container">
-            <video id="sourceVideo" controls>
+            <video controls>
                 <source src="source_video.mp4" type="video/mp4">
-                Your browser does not support the video tag. Please rename your MP4 file to <strong>source_video.mp4</strong> and place it in the same folder.
+                Your browser does not support the video tag.
             </video>
         </div>
-        <p>✔️ <strong>Your video is loaded locally.</strong> Make sure your MP4 file is named <code style="background:#1e1e2e;padding:2px 8px;border-radius:8px;">source_video.mp4</code> and placed in the same folder as this HTML file.</p>
         <div class="local-video-note">
-            📁 <strong>How to set up:</strong> Rename your MP4 file to <code>source_video.mp4</code> (or change the filename in the code below) and put it in the same directory. Then refresh the page.
+            ✅ This is your original footage. Watch it carefully to plan your rotoscope strategy.
         </div>
     </div>
 
-    <!-- STEP 2 -->
     <div class="step">
         <h2>✂️ Step 2 — Cut into 5s clips (CapCut / Premiere)</h2>
         <p>Break down your 1‑minute source into 5‑second manageable segments. This reduces render complexity and makes frame‑by‑frame corrections easier.</p>
-        <ul style="margin:15px 0 0 22px; color:#c9d1d9;">
+        <ul class="step-list">
             <li>🔹 Import original video into CapCut (or any NLE).</li>
             <li>🔹 Use split tool at every 5‑second interval → export as individual clips.</li>
             <li>🔹 Keep consistent naming: "shot_01_rotoscope.mov", "shot_02.mov".</li>
@@ -270,32 +291,25 @@ video{
         </ul>
     </div>
 
-    <!-- STEP 3 -->
     <div class="step">
         <h2>🖌️ Step 3 — Trace in After Effects (Frame‑by‑frame mastery)</h2>
         <p>Launch Adobe After Effects, import your 5s clips. Use the <strong>Roto Brush + Refine Edge</strong> tool for initial masks, then manual path refinement for crisp lines.</p>
-        <ul style="margin:15px 0 0 22px; color:#c9d1d9;">
+        <ul class="step-list">
             <li>🎯 <strong>Create comp</strong> at same frame rate as source (24fps / 30fps).</li>
             <li>🎯 Apply Roto Brush → paint green stroke on subject, hold Alt to remove background.</li>
             <li>🎯 For artistic rotoscope: Use <strong>Stroke</strong> effect or animate paths manually.</li>
             <li>🎯 Frame blending & onion skinning ensures smooth motion.</li>
-            <li>🎯 Export as ProRes with alpha channel or overlay on custom background.</li>
         </ul>
-        <div class="local-video-note" style="margin-top:20px;">
-            🔥 Pro tip: For complex shots, use the "Refine Soft Matte" effect to clean up hair or motion blur.
-        </div>
     </div>
 
-    <!-- STEP 4 -->
     <div class="step">
         <h2>🎬 Step 4 — Composite & Export Final Render</h2>
         <p>Combine your rotoscoped clips into a full 1‑minute sequence. Add stylistic backgrounds, glows, or overlay with original video for mixed aesthetics.</p>
-        <ul style="margin:15px 0 0 22px; color:#c9d1d9;">
+        <ul class="step-list">
             <li>✅ Layer rotoscoped subject over dynamic gradient or abstract texture.</li>
-            <li>✅ Use Adjustment Layers for color grading (vibrant teal & orange).</li>
-            <li>✅ Export via Media Encoder: H.264 for web, or QuickTime Animation for archival.</li>
+            <li>✅ Use Adjustment Layers for color grading.</li>
+            <li>✅ Export via Media Encoder: H.264 for web.</li>
         </ul>
-        <p style="margin-top:15px;">📽️ <strong>Final result:</strong> A seamless rotoscope animation that blends motion and illustration. Share your masterpiece!</p>
     </div>
 </div>
 
@@ -309,10 +323,23 @@ function showHome(){
     document.getElementById("tutorialPage").style.display = "none";
     document.getElementById("homePage").style.display = "block";
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Auto-play home video when returning (optional)
+    const homeVideo = document.getElementById("homeVideo");
+    if(homeVideo) {
+        homeVideo.play().catch(e => console.log("user interaction needed"));
+    }
 }
 
+// Auto-play video in home page when visible
 window.addEventListener('DOMContentLoaded', () => {
     showHome();
+    const homeVideo = document.getElementById("homeVideo");
+    if(homeVideo) {
+        // attempt autoplay muted (browsers allow muted autoplay)
+        homeVideo.muted = true;
+        homeVideo.play().catch(e => console.log("click to play video"));
+    }
 });
 </script>
 
