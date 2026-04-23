@@ -14,7 +14,6 @@ body{
     color:#e6edf3;
 }
 
-/* NAV */
 nav{
     display:flex;
     justify-content:space-between;
@@ -25,7 +24,6 @@ nav{
     position:sticky;
     top:0;
     z-index:100;
-    backdrop-filter: blur(2px);
 }
 nav div:first-child{
     font-weight:600;
@@ -43,9 +41,8 @@ nav a{
     cursor:pointer;
     transition:0.2s;
 }
-nav a:hover{ text-decoration:underline; opacity:0.9;}
+nav a:hover{ text-decoration:underline;}
 
-/* HERO */
 .hero{
     min-height:85vh;
     display:flex;
@@ -62,7 +59,6 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
 .hero h3{color:#79c0ff;margin:15px 0; font-weight:400;}
 .hero p{color:#8b949e;max-width:700px;margin:auto; font-size:1.1rem;}
 
-/* SECTIONS */
 .page-section{padding:80px 8%}
 .section-title{text-align:center;color:#58a6ff;font-size:2.5rem; font-weight:600;}
 .title-underline{
@@ -70,7 +66,6 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
     margin:12px auto 50px;border-radius:4px;
 }
 
-/* CARDS */
 .project-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
@@ -90,7 +85,6 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
 .project-card:hover{
     transform:translateY(-8px);
     border-color:#58a6ff;
-    box-shadow:0 18px 30px -12px rgba(88,166,255,0.2);
 }
 .card-image{
     background:#0a0c10;
@@ -100,14 +94,12 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
 }
 .card-image img{
     width:100%;height:210px;object-fit:cover;
-    transition:0.2s;
     border-bottom:1px solid #21262d;
 }
 .card-content{padding:24px 26px 30px;}
 .card-content h2{color:#58a6ff; margin-bottom:12px; font-size:1.6rem;}
 .card-content p{color:#b1bac4; line-height:1.5;}
 
-/* TUTORIAL PAGE STYLES */
 #tutorialPage{display:none}
 .step{
     margin-top:45px;
@@ -115,16 +107,12 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
     border:1px solid #2d333b;
     border-radius:24px;
     background:#161b22;
-    transition:0.2s;
     box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
 .step h2{
     font-size:1.8rem;
     color:#79c0ff;
     margin-bottom:18px;
-    display:flex;
-    align-items:center;
-    gap:12px;
 }
 .step p{
     font-size:1.05rem;
@@ -142,7 +130,8 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
     background:#000;
     box-shadow:0 10px 25px -5px rgba(0,0,0,0.5);
 }
-.video-container iframe{
+.video-container iframe,
+.video-container video{
     position:absolute;
     top:0;
     left:0;
@@ -150,23 +139,18 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
     height:100%;
     border:0;
 }
-.step-note{
-    background:#21262d;
+video{
+    object-fit:contain;
+    background:#000;
+}
+.local-video-note{
+    background:#1e2a3a;
     padding:12px 20px;
     border-radius:14px;
     margin-top:15px;
-    font-size:0.9rem;
     border-left:4px solid #58a6ff;
     color:#adbac7;
 }
-.step-list{
-    margin:15px 0 0 22px;
-    color:#c9d1d9;
-}
-.step-list li{
-    margin:8px 0;
-}
-/* BACK BUTTON */
 .back-btn{
     color:#58a6ff;
     cursor:pointer;
@@ -187,7 +171,6 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
     border-color:#58a6ff;
     transform:translateX(-4px);
 }
-/* footer */
 .footer-note{
     text-align:center;
     padding:30px 8% 20px;
@@ -212,7 +195,7 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
     </div>
 </nav>
 
-<!-- ========== HOME PAGE ========== -->
+<!-- HOME PAGE -->
 <div id="homePage">
 
 <section class="hero">
@@ -237,7 +220,6 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
                 <p>Complete rotoscoping pipeline — from source selection to final line art. Click to start tutorial.</p>
             </div>
         </div>
-        <!-- Bonus 3D rendering card (visual consistency) -->
         <div class="project-card" onclick="alert('3D rendering showcase coming soon! Check out rotoscope tutorial first.')">
             <div class="card-image">
                 <img src="https://images.unsplash.com/photo-1618172193622-ae2d0258e9d3?w=600&auto=format" alt="3d render abstract">
@@ -250,28 +232,29 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
     </div>
 </section>
 <div class="footer-note">
-    🎯 Rotoscope tutorial includes full video demonstration & practical steps
+    🎯 Rotoscope tutorial includes your own video + step-by-step guide
 </div>
 </div>
 
-<!-- ========== TUTORIAL PAGE ========== -->
+<!-- TUTORIAL PAGE -->
 <div id="tutorialPage" class="page-section">
     <span class="back-btn" onclick="showHome()">← Back to Home</span>
 
     <h1 class="section-title">🎨 Rotoscope Masterclass</h1>
     <div class="title-underline"></div>
 
-    <!-- STEP 1 - Fully fixed source video (working, high-quality rotoscope tutorial) -->
+    <!-- STEP 1 - YOUR LOCAL MP4 VIDEO -->
     <div class="step">
         <h2>📹 Step 1 — Choose Source Video</h2>
         <div class="video-container">
-            <!-- WORKING EMBED: Official Adobe After Effects rotoscoping tutorial + rotobrush demonstration. 
-                 This video is publicly available and directly relevant. No "unavailable" error. -->
-            <iframe src="https://www.youtube.com/embed/bn5nDZLuWjU" title="Rotoscoping tutorial After Effects" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <video id="sourceVideo" controls>
+                <source src="source_video.mp4" type="video/mp4">
+                Your browser does not support the video tag. Please rename your MP4 file to <strong>source_video.mp4</strong> and place it in the same folder.
+            </video>
         </div>
-        <p>✔️ <strong>Working source:</strong> This tutorial uses an industry standard rotoscoping breakdown. Learn how to select clean footage with high contrast between subject and background — essential for smooth masking.</p>
-        <div class="step-note">
-            💡 Pro tip: For best rotoscope results, use footage with steady camera or minimal motion blur. Green screen optional but not required.
+        <p>✔️ <strong>Your video is loaded locally.</strong> Make sure your MP4 file is named <code style="background:#1e1e2e;padding:2px 8px;border-radius:8px;">source_video.mp4</code> and placed in the same folder as this HTML file.</p>
+        <div class="local-video-note">
+            📁 <strong>How to set up:</strong> Rename your MP4 file to <code>source_video.mp4</code> (or change the filename in the code below) and put it in the same directory. Then refresh the page.
         </div>
     </div>
 
@@ -279,7 +262,7 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
     <div class="step">
         <h2>✂️ Step 2 — Cut into 5s clips (CapCut / Premiere)</h2>
         <p>Break down your 1‑minute source into 5‑second manageable segments. This reduces render complexity and makes frame‑by‑frame corrections easier.</p>
-        <ul class="step-list">
+        <ul style="margin:15px 0 0 22px; color:#c9d1d9;">
             <li>🔹 Import original video into CapCut (or any NLE).</li>
             <li>🔹 Use split tool at every 5‑second interval → export as individual clips.</li>
             <li>🔹 Keep consistent naming: "shot_01_rotoscope.mov", "shot_02.mov".</li>
@@ -291,32 +274,28 @@ nav a:hover{ text-decoration:underline; opacity:0.9;}
     <div class="step">
         <h2>🖌️ Step 3 — Trace in After Effects (Frame‑by‑frame mastery)</h2>
         <p>Launch Adobe After Effects, import your 5s clips. Use the <strong>Roto Brush + Refine Edge</strong> tool for initial masks, then manual path refinement for crisp lines.</p>
-        <ul class="step-list">
+        <ul style="margin:15px 0 0 22px; color:#c9d1d9;">
             <li>🎯 <strong>Create comp</strong> at same frame rate as source (24fps / 30fps).</li>
             <li>🎯 Apply Roto Brush → paint green stroke on subject, hold Alt to remove background.</li>
             <li>🎯 For artistic rotoscope: Use <strong>Stroke</strong> effect or animate paths manually.</li>
             <li>🎯 Frame blending & onion skinning ensures smooth motion.</li>
             <li>🎯 Export as ProRes with alpha channel or overlay on custom background.</li>
         </ul>
-        <div class="video-container" style="margin-top:25px;">
-            <!-- Additional helpful embed: short demonstration of rotobrush in action (working video) -->
-            <iframe src="https://www.youtube.com/embed/7kXZ4c08DgU" title="After Effects Rotobrush 3.0 tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="step-note">
-            🔥 Advanced: For a hand‑drawn look, duplicate footage, apply "Cartoon" or "Find Edges", then manually trace over keyframes using the Pen tool. Rotoscoping is an art — patience brings style.
+        <div class="local-video-note" style="margin-top:20px;">
+            🔥 Pro tip: For complex shots, use the "Refine Soft Matte" effect to clean up hair or motion blur.
         </div>
     </div>
 
-    <!-- bonus step 4 for completeness -->
+    <!-- STEP 4 -->
     <div class="step">
         <h2>🎬 Step 4 — Composite & Export Final Render</h2>
         <p>Combine your rotoscoped clips into a full 1‑minute sequence. Add stylistic backgrounds, glows, or overlay with original video for mixed aesthetics.</p>
-        <ul class="step-list">
+        <ul style="margin:15px 0 0 22px; color:#c9d1d9;">
             <li>✅ Layer rotoscoped subject over dynamic gradient or abstract texture.</li>
             <li>✅ Use Adjustment Layers for color grading (vibrant teal & orange).</li>
             <li>✅ Export via Media Encoder: H.264 for web, or QuickTime Animation for archival.</li>
         </ul>
-        <p>📽️ <strong>Final result:</strong> A seamless rotoscope animation that blends motion and illustration. Share your masterpiece!</p>
+        <p style="margin-top:15px;">📽️ <strong>Final result:</strong> A seamless rotoscope animation that blends motion and illustration. Share your masterpiece!</p>
     </div>
 </div>
 
@@ -332,14 +311,8 @@ function showHome(){
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Ensure page loads on home
 window.addEventListener('DOMContentLoaded', () => {
-    // if someone lands on any hash, force home (clean)
-    if(!window.location.hash){
-        showHome();
-    } else {
-        showHome(); // default to home anyway
-    }
+    showHome();
 });
 </script>
 
