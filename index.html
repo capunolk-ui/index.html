@@ -110,7 +110,7 @@
             border-radius: 4px;
         }
 
-        /* project grid - two cards exactly like reference */
+        /* project grid */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -182,7 +182,7 @@
             background: #0b0f16;
         }
 
-        /* tutorial page styling (hidden initially) */
+        /* tutorial page styling */
         #tutorialPage {
             display: none;
         }
@@ -205,7 +205,6 @@
             border-color: #5a73b0;
         }
 
-        /* tutorial internal styles */
         .hero-section {
             background: linear-gradient(135deg, #10141c 0%, #0b0e14 100%);
             border-radius: 2rem;
@@ -255,50 +254,72 @@
             gap: 2rem;
             margin: 2rem 0;
         }
-        @media (max-width: 800px) {
+        @media (max-width: 1000px) {
             .two-col-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
         }
+
         .tutorial-steps { background: #0d1117; border-radius: 1.5rem; padding: 1.5rem; border: 1px solid #242a35; }
         .step-item { margin-bottom: 2rem; background: #0b0f16; border-radius: 1.25rem; padding: 1rem; border: 1px solid #1c212c; }
         .step-number { font-size: 1.6rem; font-weight: 800; color: #3b5b9b; margin-right: 0.75rem; }
         .step-title { font-size: 1.3rem; font-weight: 600; margin: 0.5rem 0 0.6rem; color: #cbd5ff; }
         .step-desc { color: #b1c2e6; font-size: 0.95rem; margin-bottom: 0.8rem; }
         .step-media-placeholder { background: #11141f; border-radius: 1rem; padding: 1rem; text-align: center; border: 1px dashed #2e3b4e; color: #5e6f97; font-size: 0.85rem; }
-        .weekly-progress { background: #0d1117; border-radius: 1.5rem; padding: 1.5rem; border: 1px solid #242a35; }
-        .progress-week-list { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1rem; }
-        .week-card { background: #0b0f16; border-radius: 1rem; padding: 0.8rem 1rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid #1f2532; }
-        .play-placeholder { background: #171d2b; width: 34px; height: 34px; border-radius: 40px; display: flex; align-items: center; justify-content: center; color: #5c73ad; border: 1px solid #2d374f; text-decoration: none; transition: 0.2s; }
-        .play-placeholder:hover { background: #5c73ad; color: #fff; }
-        footer small { display: block; margin-top: 1rem; }
-        .author-name {
-            font-weight: 600;
-            background: #0f121b;
-            padding: 0.25rem 1rem;
-            border-radius: 30px;
+
+        /* WEEKLY PROGRESS - VIDEO FORMAT */
+        .weekly-progress { 
+            background: #0d1117; 
+            border-radius: 1.5rem; 
+            padding: 1.5rem; 
+            border: 1px solid #242a35; 
+        }
+        .progress-week-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 1.5rem; 
+            margin-top: 1rem; 
+        }
+        .week-video-card { 
+            background: #0b0f16; 
+            border-radius: 1.5rem; 
+            padding: 1.5rem; 
+            border: 1px solid #1f2532; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .week-label {
+            background: #5d81f7;
+            color: white;
+            padding: 0.4rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(93, 129, 247, 0.3);
+        }
+        .video-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .week-caption {
+            margin-top: 1rem;
+            color: #b1c2e6;
             font-size: 0.9rem;
         }
-        .badge {
-            display: inline-block;
-            background: #1f2a3e;
-            color: #7aa2f7;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 0.25rem 0.9rem;
-            border-radius: 30px;
-            letter-spacing: 0.3px;
-            margin-bottom: 1rem;
-            border: 1px solid #2d3a5e;
-        }
-        .disclaimer {
-            font-size: 0.75rem;
-            color: #6c7a9e;
-            margin-top: 1rem;
-        }
-        .video-placeholder-text {
-            color: #5c6e9c;
-            font-weight: 500;
-        }
+
         .section-caption {
             font-size: 1.8rem;
             font-weight: 700;
@@ -313,8 +334,8 @@
     <div class="logo">🎨 Multimedia Portfolio</div>
     <div class="nav-links">
         <a id="navHome">Home</a>
-        <a id="navPortfolio" style="cursor:pointer;">Portfolio</a>
-        <a id="navAbout" style="cursor:pointer;">About</a>
+        <a id="navPortfolio">Portfolio</a>
+        <a id="navAbout">About</a>
     </div>
 </div>
 
@@ -333,7 +354,6 @@
         <div class="title-underline"></div>
 
         <div class="project-grid">
-            <!-- 3D Solar System Card -->
             <div class="project-card" id="card3dSolar">
                 <div class="card-media">
                     <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=600&auto=format" alt="3d solar system">
@@ -341,11 +361,10 @@
                 <div class="card-content">
                     <div class="card-badge">3D RENDERING</div>
                     <h2>3D Solar System</h2>
-                    <p>3D rendering of planets involves creating realistic visual models of celestial bodies using computer graphics. It simulates textures, lighting, and atmospheric effects to depict planets with scientific accuracy or artistic style.</p>
+                    <p>3D rendering of planets involves creating realistic visual models of celestial bodies using computer graphics. It simulates textures, lighting, and atmospheric effects.</p>
                 </div>
             </div>
 
-            <!-- 1-minute Video Rotoscope Card -->
             <div class="project-card" id="cardRotoscope">
                 <div class="card-media">
                     <div style="display: flex; align-items:center; justify-content:center; height:200px; background:#0a0c10; font-size:3rem;">🎞️✏️</div>
@@ -353,7 +372,7 @@
                 <div class="card-content">
                     <div class="card-badge">ROTOSCOPE</div>
                     <h2>1-minute Video Rotoscope</h2>
-                    <p>Video rotoscoping is a technique where artists trace over footage frame by frame to isolate subjects or create visual effects. It's commonly used for background removal, motion tracking, and stylized animation.</p>
+                    <p>Video rotoscoping is a technique where artists trace over footage frame by frame to isolate subjects or create visual effects.</p>
                 </div>
             </div>
         </div>
@@ -370,7 +389,7 @@
     <div class="hero-section">
         <div class="badge">✦ ROTOSCOPE PROJECT</div>
         <h1 style="font-size:2.5rem; margin-top:0.5rem;">1-Minute Rotoscope Video</h1>
-        <p style="color:#a9b7d4;">A frame-by-frame animation created using the tracing technique with an auto-brush tool in Adobe After Effects.</p>
+        <p style="color:#a9b7d4;">A frame-by-frame animation created using the tracing technique in After Effects.</p>
         <div class="tools-row">
             <span class="tool-badge">🎬 Adobe After Effects</span>
             <span class="tool-badge">✂️ Adobe Premiere Pro</span>
@@ -378,62 +397,72 @@
         </div>
         <div class="meta-row">
             <div class="author-name">🎨 Emmanuel C. Capuno</div>
-            <div class="hot-like"><span>🔥 HOT</span><span>👍 LIKE</span><a href="#" id="ytPlaceholder" style="color:#7aa2f7; margin-left:0.8rem;">Watch on YouTube →</a></div>
+            <div class="hot-like"><span>🔥 HOT</span><span>👍 LIKE</span></div>
         </div>
-        <div class="disclaimer">Disclaimer: This video was created for academic purposes only.</div>
-    </div>
-
-    <div class="video-showcase">
-        <div style="font-size:3rem;">🎬</div>
-        <div class="video-placeholder-text">Rotoscope Video Preview (Placeholder)</div>
-        <div style="font-size:0.8rem; margin-top:8px;">⬤ Your final 1-min rotoscope animation will appear here</div>
     </div>
 
     <div class="two-col-grid">
+        <!-- Steps -->
         <div class="tutorial-steps">
             <div class="section-caption">📋 Step-by-Step Tutorial</div>
-
             <div class="step-item">
                 <div class="step-number">1</div>
                 <div class="step-title">🎥 Select Source Material</div>
-                <div class="step-desc">Choose high-quality video with clear subject-background contrast and interesting movement patterns.</div>
-                <div class="step-media-placeholder">
-                    <video width="100%" style="border-radius: 14px; max-height: 200px; background:#000;" controls>
-                        <source src="source_video.mp4" type="video/mp4">
-                        Your browser does not support video. Place "source_video.mp4" in the same folder.
-                    </video>
-                    <div style="font-size:0.7rem; margin-top:6px;">📁 Your source video (Step 1)</div>
-                </div>
+                <div class="step-desc">Choose high-quality video with clear subject-background contrast.</div>
             </div>
-
-            <div class="step-item"><div class="step-number">2</div><div class="step-title">✂️ Cut the Video into 5-Second Clips</div><div class="step-desc">Use CapCut to split the selected video into 5-second segments for easier editing.</div><div class="step-media-placeholder">🖼️ [Image Preview Placeholder] — Clip splitting demo</div></div>
-            <div class="step-item"><div class="step-number">3</div><div class="step-title">🆕 Create a New Composition</div><div class="step-desc">In After Effects, create a separate 5-second composition for each clip segment.</div><div class="step-media-placeholder">🎞️ [Screenshot / GIF Placeholder] — AE composition settings</div></div>
-            <div class="step-item"><div class="step-number">4</div><div class="step-title">⚙️ Render All Compositions</div><div class="step-desc">Export each 5-second composition through the Render Queue with consistent settings.</div><div class="step-media-placeholder">📀 [Render settings preview — will be added soon]</div></div>
-            <div class="step-item"><div class="step-number">5</div><div class="step-title">🖌️ Trace Each Layer</div><div class="step-desc">Isolate the subject into separate layers (shirt, pants, body, hair, shoes) using the Roto Brush Tool. Freeze each layer to edit others independently.</div><div class="step-media-placeholder">✏️ [Rotoscope tracing breakdown — image coming soon]</div></div>
-            <div class="step-item"><div class="step-number">6</div><div class="step-title">🎨 Add Fill Colors to Layers</div><div class="step-desc">Apply solid color fills to each isolated layer (shirt, pants, hair, etc.) to prepare for stylization.</div><div class="step-media-placeholder">🌈 [Color fill preview / layer styling example]</div></div>
-            <div class="step-item"><div class="step-number">7</div><div class="step-title">📁 Compile All 5-Second Clips</div><div class="step-desc">Combine all clips in CapCut, add audio, and export in mp4 format.</div><div class="step-media-placeholder">🎵 [Audio syncing + compilation placeholder]</div></div>
-            <div class="step-item"><div class="step-number">8</div><div class="step-title">✍️ Edit Lyrics & Background</div><div class="step-desc">Use Adobe Premiere Pro to add lyrics, sync them with the audio, and change background colors to enhance visual appeal.</div><div class="step-media-placeholder">📝 [Lyrics & background editing preview — coming soon]</div></div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <div class="step-title">🖌️ Trace & Fill</div>
+                <div class="step-desc">Isolate segments (shirt, hair, shoes) using the Roto Brush tool.</div>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <div class="step-title">📁 Final Compilation</div>
+                <div class="step-desc">Sync with audio and add lyrics in Premiere Pro.</div>
+            </div>
         </div>
 
+        <!-- VERTICAL WEEKLY PROGRESS WITH VIDEOS -->
         <div class="weekly-progress">
             <div class="section-caption">📅 Weekly Progress</div>
             <div class="progress-week-list">
-                <!-- UPDATED WEEKLY LINKS -->
-                <div class="week-card"><div><h4>Week 1</h4><p>Rotoscope Pt.1 — Emmanuel C. Capuno</p></div><a href="https://youtu.be/IkS9TObr_vM" target="_blank" class="play-placeholder">▶️</a></div>
-                <div class="week-card"><div><h4>Week 2</h4><p>Rotoscope Pt.2 — Emmanuel C. Capuno</p></div><a href="https://youtu.be/AMBzzFDpU-Q" target="_blank" class="play-placeholder">▶️</a></div>
-                <div class="week-card"><div><h4>Week 3</h4><p>Rotoscope Pt.3 — Emmanuel C. Capuno</p></div><a href="https://youtu.be/sJ_EoF-0uwI" target="_blank" class="play-placeholder">▶️</a></div>
                 
-                <div class="week-card"><div><h4>Week 4</h4><p>Rotoscope Pt.4 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 5</h4><p>Rotoscope Pt.5 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 6</h4><p>Rotoscope Pt.6 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 7</h4><p>Rotoscope Pt.7 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 8</h4><p>Rotoscope Pt.8 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 9</h4><p>Rotoscope Pt.9 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 10</h4><p>Rotoscope Pt.10 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 11</h4><p>Rotoscope Pt.11 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 12</h4><p>Rotoscope Pt.12 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <!-- Week 1 -->
+                <div class="week-video-card">
+                    <div class="week-label">Week 1</div>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/IkS9TObr_vM" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="week-caption">Rotoscope Pt.1 — Emmanuel C. Capuno</div>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="week-video-card">
+                    <div class="week-label">Week 2</div>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/AMBzzFDpU-Q" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="week-caption">Rotoscope Pt.2 — Emmanuel C. Capuno</div>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="week-video-card">
+                    <div class="week-label">Week 3</div>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/sJ_EoF-0uwI" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="week-caption">Rotoscope Pt.3 — Emmanuel C. Capuno</div>
+                </div>
+
+                <!-- Week 4 Placeholder -->
+                <div class="week-video-card">
+                    <div class="week-label">Week 4</div>
+                    <div class="video-container" style="background:#161b22; display:flex; align-items:center; justify-content:center; padding-bottom: 0; height: 180px;">
+                        <span style="color:#444;">Video Coming Soon</span>
+                    </div>
+                </div>
+
             </div>
-            <div style="margin-top: 1rem; font-size:0.7rem; text-align:center; color:#58658b;">⬤ Weekly video exports will appear here</div>
         </div>
     </div>
     <footer><small>© 2026 Emmanuel C. Capuno — BSIT-S-T-2A. All rights reserved.</small></footer>
@@ -442,12 +471,8 @@
 <script>
     const homePage = document.getElementById('homePage');
     const tutorialPage = document.getElementById('tutorialPage');
-    const navHome = document.getElementById('navHome');
-    const navPortfolio = document.getElementById('navPortfolio');
-    const navAbout = document.getElementById('navAbout');
     const rotoscopeCard = document.getElementById('cardRotoscope');
     const backBtn = document.getElementById('backToHomeBtn');
-    const ytPlaceholder = document.getElementById('ytPlaceholder');
 
     function showHome() {
         homePage.style.display = 'block';
@@ -458,39 +483,12 @@
         homePage.style.display = 'none';
         tutorialPage.style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        const vid = tutorialPage.querySelector('video');
-        if(vid && vid.paused) vid.play().catch(e=>console.log("autoplay blocked"));
     }
-
-    navHome.addEventListener('click', showHome);
-    navPortfolio.addEventListener('click', () => {
-        if(homePage.style.display !== 'none') {
-            document.querySelector('.page-section').scrollIntoView({ behavior: 'smooth' });
-        } else {
-            showHome();
-            setTimeout(() => document.querySelector('.page-section').scrollIntoView({ behavior: 'smooth' }), 100);
-        }
-    });
-    navAbout.addEventListener('click', () => {
-        alert("🎓 Emmanuel C. Capuno — Multimedia & Authoring student. Passionate about rotoscoping, 3D rendering, and digital storytelling.");
-    });
 
     rotoscopeCard.addEventListener('click', showTutorial);
     backBtn.addEventListener('click', showHome);
-
-    if(ytPlaceholder) {
-        ytPlaceholder.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('YouTube video placeholder — final rotoscope link will be added here.');
-        });
-    }
-
-    const card3d = document.getElementById('card3dSolar');
-    if(card3d) {
-        card3d.addEventListener('click', () => {
-            alert("✨ 3D Solar System project: realistic planetary rendering using Blender & advanced lighting. Full showcase coming soon!");
-        });
-    }
+    document.getElementById('navHome').addEventListener('click', showHome);
+    document.getElementById('navPortfolio').addEventListener('click', showHome);
 
     showHome();
 </script>
