@@ -205,7 +205,7 @@
             border-color: #5a73b0;
         }
 
-        /* tutorial internal styles (preserving full tutorial layout from earlier request) */
+        /* tutorial internal styles */
         .hero-section {
             background: linear-gradient(135deg, #10141c 0%, #0b0e14 100%);
             border-radius: 2rem;
@@ -268,7 +268,8 @@
         .weekly-progress { background: #0d1117; border-radius: 1.5rem; padding: 1.5rem; border: 1px solid #242a35; }
         .progress-week-list { display: flex; flex-direction: column; gap: 0.9rem; margin-top: 1rem; }
         .week-card { background: #0b0f16; border-radius: 1rem; padding: 0.8rem 1rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid #1f2532; }
-        .play-placeholder { background: #171d2b; width: 34px; height: 34px; border-radius: 40px; display: flex; align-items: center; justify-content: center; color: #5c73ad; border: 1px solid #2d374f; }
+        .play-placeholder { background: #171d2b; width: 34px; height: 34px; border-radius: 40px; display: flex; align-items: center; justify-content: center; color: #5c73ad; border: 1px solid #2d374f; text-decoration: none; transition: 0.2s; }
+        .play-placeholder:hover { background: #5c73ad; color: #fff; }
         footer small { display: block; margin-top: 1rem; }
         .author-name {
             font-weight: 600;
@@ -335,7 +336,7 @@
             <!-- 3D Solar System Card -->
             <div class="project-card" id="card3dSolar">
                 <div class="card-media">
-                    <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=600&auto=format" alt="3d solar system" style="width:100%; height:200px; object-fit:cover;">
+                    <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?w=600&auto=format" alt="3d solar system">
                 </div>
                 <div class="card-content">
                     <div class="card-badge">3D RENDERING</div>
@@ -366,7 +367,6 @@
 <div id="tutorialPage" class="container" style="max-width:1200px; margin:0 auto; padding:2rem 1rem;">
     <div class="back-home-btn" id="backToHomeBtn">← Back to Home</div>
 
-    <!-- Hero / rotoscope header -->
     <div class="hero-section">
         <div class="badge">✦ ROTOSCOPE PROJECT</div>
         <h1 style="font-size:2.5rem; margin-top:0.5rem;">1-Minute Rotoscope Video</h1>
@@ -383,16 +383,13 @@
         <div class="disclaimer">Disclaimer: This video was created for academic purposes only.</div>
     </div>
 
-    <!-- Rotoscope video blank placeholder -->
     <div class="video-showcase">
         <div style="font-size:3rem;">🎬</div>
         <div class="video-placeholder-text">Rotoscope Video Preview (Placeholder)</div>
         <div style="font-size:0.8rem; margin-top:8px;">⬤ Your final 1-min rotoscope animation will appear here</div>
     </div>
 
-    <!-- Two column: steps + weekly progress -->
     <div class="two-col-grid">
-        <!-- steps -->
         <div class="tutorial-steps">
             <div class="section-caption">📋 Step-by-Step Tutorial</div>
 
@@ -418,13 +415,14 @@
             <div class="step-item"><div class="step-number">8</div><div class="step-title">✍️ Edit Lyrics & Background</div><div class="step-desc">Use Adobe Premiere Pro to add lyrics, sync them with the audio, and change background colors to enhance visual appeal.</div><div class="step-media-placeholder">📝 [Lyrics & background editing preview — coming soon]</div></div>
         </div>
 
-        <!-- Weekly progress sidebar - updated with Emmanuel C. Capuno name -->
         <div class="weekly-progress">
             <div class="section-caption">📅 Weekly Progress</div>
             <div class="progress-week-list">
-                <div class="week-card"><div><h4>Week 1</h4><p>Rotoscope Pt.1 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 2</h4><p>Rotoscope Pt.2 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
-                <div class="week-card"><div><h4>Week 3</h4><p>Rotoscope Pt.3 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
+                <!-- UPDATED WEEKLY LINKS -->
+                <div class="week-card"><div><h4>Week 1</h4><p>Rotoscope Pt.1 — Emmanuel C. Capuno</p></div><a href="https://youtu.be/IkS9TObr_vM" target="_blank" class="play-placeholder">▶️</a></div>
+                <div class="week-card"><div><h4>Week 2</h4><p>Rotoscope Pt.2 — Emmanuel C. Capuno</p></div><a href="https://youtu.be/AMBzzFDpU-Q" target="_blank" class="play-placeholder">▶️</a></div>
+                <div class="week-card"><div><h4>Week 3</h4><p>Rotoscope Pt.3 — Emmanuel C. Capuno</p></div><a href="https://youtu.be/sJ_EoF-0uwI" target="_blank" class="play-placeholder">▶️</a></div>
+                
                 <div class="week-card"><div><h4>Week 4</h4><p>Rotoscope Pt.4 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
                 <div class="week-card"><div><h4>Week 5</h4><p>Rotoscope Pt.5 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
                 <div class="week-card"><div><h4>Week 6</h4><p>Rotoscope Pt.6 — Emmanuel C. Capuno</p></div><div class="play-placeholder">▶️</div></div>
@@ -442,7 +440,6 @@
 </div>
 
 <script>
-    // Elements
     const homePage = document.getElementById('homePage');
     const tutorialPage = document.getElementById('tutorialPage');
     const navHome = document.getElementById('navHome');
@@ -452,7 +449,6 @@
     const backBtn = document.getElementById('backToHomeBtn');
     const ytPlaceholder = document.getElementById('ytPlaceholder');
 
-    // Helper functions
     function showHome() {
         homePage.style.display = 'block';
         tutorialPage.style.display = 'none';
@@ -466,7 +462,6 @@
         if(vid && vid.paused) vid.play().catch(e=>console.log("autoplay blocked"));
     }
 
-    // Navigation
     navHome.addEventListener('click', showHome);
     navPortfolio.addEventListener('click', () => {
         if(homePage.style.display !== 'none') {
@@ -480,7 +475,6 @@
         alert("🎓 Emmanuel C. Capuno — Multimedia & Authoring student. Passionate about rotoscoping, 3D rendering, and digital storytelling.");
     });
 
-    // Rotoscope card click -> tutorial
     rotoscopeCard.addEventListener('click', showTutorial);
     backBtn.addEventListener('click', showHome);
 
@@ -498,7 +492,6 @@
         });
     }
 
-    // Ensure home visible at start
     showHome();
 </script>
 </body>
