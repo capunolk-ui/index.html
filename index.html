@@ -317,7 +317,7 @@
         <div class="hero-content">
             <h1>Multimedia & Authoring</h1>
             <h3>Rotoscope and 3D Rendering</h3>
-            <p>Showcasing the journey from frame-by-frame tracing to orbital mathematical visualizations.</p>
+            <p>Showcasing the journey from frame-by-frame tracing to orbital mathematical visualizations for BSIT-S-T-2A.</p>
         </div>
     </section>
 
@@ -431,7 +431,12 @@
     }
 
     const planetData = [
-        { name: "Mercury", factor: 0.2408, period: "88 days", videoLink: "https://youtu.be/mrUZM4u1I0E" },
+        { 
+            name: "Mercury", 
+            factor: 0.2408, 
+            period: "88 days", 
+            videoLink: "https://youtu.be/mrUZM4u1I0E" // Updated Link
+        },
         { name: "Venus", factor: 0.6152, period: "225 days" },
         { name: "Earth", factor: 1.0, period: "365.25 days" },
         { name: "Mars", factor: 1.8808, period: "687 days" },
@@ -448,7 +453,13 @@
         planetData.forEach(planet => {
             const age = (earthAge / planet.factor).toFixed(4);
             const link = planet.videoLink ? `<a href="${planet.videoLink}" target="_blank" class="render-link">📁 Watch Render Output</a>` : '';
-            grid.innerHTML += `<div class="planet-card"><h2>${planet.name}</h2><div class="data-row"><span>Age:</span><span>${age} yrs</span></div><div class="data-row"><span>Period:</span><span>${planet.period}</span></div>${link}</div>`;
+            grid.innerHTML += `
+                <div class="planet-card">
+                    <h2>${planet.name}</h2>
+                    <div class="data-row"><span>Age:</span><span>${age} yrs</span></div>
+                    <div class="data-row"><span>Period:</span><span>${planet.period}</span></div>
+                    ${link}
+                </div>`;
         });
     }
     showHome();
