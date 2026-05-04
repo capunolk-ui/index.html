@@ -95,21 +95,6 @@
         .page-section {
             padding: 80px 8%;
         }
-        .section-title {
-            text-align: center;
-            font-size: 2.4rem;
-            font-weight: 700;
-            color: #58a6ff;
-            margin-bottom: 1rem;
-        }
-        .title-underline {
-            width: 80px;
-            height: 4px;
-            background: #58a6ff;
-            margin: 0 auto 50px auto;
-            border-radius: 4px;
-        }
-
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -311,13 +296,12 @@
     </div>
 </div>
 
-<!-- ========== HOMEPAGE ========== -->
 <div id="homePage">
     <section class="hero">
         <div class="hero-content">
             <h1>Multimedia & Authoring</h1>
             <h3>Rotoscope and 3D Rendering</h3>
-            <p>Showcasing the journey from frame-by-frame tracing to orbital mathematical visualizations for BSIT-S-T-2A.</p>
+            <p>Showcasing the journey from frame-by-frame tracing to orbital mathematical visualizations.</p>
         </div>
     </section>
 
@@ -341,7 +325,6 @@
     </section>
 </div>
 
-<!-- ========== 3D SOLAR SYSTEM PAGE ========== -->
 <div id="solarPage" class="subpage-container">
     <div class="back-home-btn" onclick="showHome()">← Back to Home</div>
     <h1 style="margin-bottom: 2rem;">Celestial Data Output</h1>
@@ -353,7 +336,6 @@
     <div class="celestial-grid" id="planetGrid"></div>
 </div>
 
-<!-- ========== ROTOSCOPE PAGE ========== -->
 <div id="rotoPage" class="subpage-container">
     <div class="back-home-btn" onclick="showHome()">← Back to Home</div>
     <h1 style="margin-bottom: 1rem;">Rotoscope Tutorial & Progress</h1>
@@ -431,12 +413,7 @@
     }
 
     const planetData = [
-        { 
-            name: "Mercury", 
-            factor: 0.2408, 
-            period: "88 days", 
-            videoLink: "https://youtu.be/mrUZM4u1I0E" // Updated Link
-        },
+        { name: "Mercury", factor: 0.2408, period: "88 days", url: "https://youtu.be/mrUZM4u1I0E" },
         { name: "Venus", factor: 0.6152, period: "225 days" },
         { name: "Earth", factor: 1.0, period: "365.25 days" },
         { name: "Mars", factor: 1.8808, period: "687 days" },
@@ -452,13 +429,14 @@
         grid.innerHTML = '';
         planetData.forEach(planet => {
             const age = (earthAge / planet.factor).toFixed(4);
-            const link = planet.videoLink ? `<a href="${planet.videoLink}" target="_blank" class="render-link">📁 Watch Render Output</a>` : '';
+            // Ensure link logic is robust
+            const linkHtml = planet.url ? `<a href="${planet.url}" target="_blank" class="render-link">📁 Watch Render Output</a>` : '';
             grid.innerHTML += `
                 <div class="planet-card">
                     <h2>${planet.name}</h2>
                     <div class="data-row"><span>Age:</span><span>${age} yrs</span></div>
                     <div class="data-row"><span>Period:</span><span>${planet.period}</span></div>
-                    ${link}
+                    ${linkHtml}
                 </div>`;
         });
     }
