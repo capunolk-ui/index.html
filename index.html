@@ -540,7 +540,7 @@
             factor: 0.2408, 
             period: "88 Earth days", 
             desc: "Smallest and fastest planet, with dramatic temperature swings.",
-            videoLink: "file:///C:/tmp/0001-0150.mkv" // Local file path added here
+            videoLink: "https://youtu.be/mrUZM4u1I0E" // Updated link
         },
         { name: "Venus", factor: 0.6152, period: "225 Earth days", desc: "Earth's twin, shaped by a thick atmosphere and extreme heat." },
         { name: "Earth", factor: 1.0, period: "365.25 Earth days", desc: "Our reference planet and the only known world with life." },
@@ -559,9 +559,9 @@
         planetData.forEach(planet => {
             const planetAge = (earthAge / planet.factor).toFixed(4);
             
-            // Check if this planet (Mercury) has a video link
+            // Logic to display the video link if present
             const videoHtml = planet.videoLink 
-                ? `<a href="${planet.videoLink}" class="render-link">📁 Watch Render: 0001-0150.mkv</a>` 
+                ? `<a href="${planet.videoLink}" target="_blank" class="render-link">📁 Watch Render: 0001-0150.mkv</a>` 
                 : '';
 
             grid.innerHTML += `
