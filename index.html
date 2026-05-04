@@ -299,6 +299,19 @@
             color: #8b949e;
             font-style: italic;
         }
+        .render-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed #30363d;
+            color: #7c4dff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .render-link:hover {
+            text-decoration: underline;
+        }
 
         /* ROTOSCOPE SPECIFIC STYLES */
         .hero-section { background: linear-gradient(135deg, #10141c 0%, #0b0e14 100%); border-radius: 2rem; padding: 2rem; margin-bottom: 2rem; border: 1px solid #252a34; }
@@ -522,7 +535,13 @@
 
     // Solar System Data & Logic
     const planetData = [
-        { name: "Mercury", factor: 0.2408, period: "88 Earth days", desc: "Smallest and fastest planet, with dramatic temperature swings." },
+        { 
+            name: "Mercury", 
+            factor: 0.2408, 
+            period: "88 Earth days", 
+            desc: "Smallest and fastest planet, with dramatic temperature swings.",
+            videoLink: "file:///C:/tmp/0001-0150.mkv" // Local file path added here
+        },
         { name: "Venus", factor: 0.6152, period: "225 Earth days", desc: "Earth's twin, shaped by a thick atmosphere and extreme heat." },
         { name: "Earth", factor: 1.0, period: "365.25 Earth days", desc: "Our reference planet and the only known world with life." },
         { name: "Mars", factor: 1.8808, period: "687 Earth days", desc: "A cold desert planet known for iron-rich terrain." },
@@ -539,6 +558,12 @@
 
         planetData.forEach(planet => {
             const planetAge = (earthAge / planet.factor).toFixed(4);
+            
+            // Check if this planet (Mercury) has a video link
+            const videoHtml = planet.videoLink 
+                ? `<a href="${planet.videoLink}" class="render-link">📁 Watch Render: 0001-0150.mkv</a>` 
+                : '';
+
             grid.innerHTML += `
                 <div class="planet-card">
                     <h2>${planet.name}</h2>
@@ -546,6 +571,7 @@
                     <div class="data-row"><span>Revolutions:</span><span>${planetAge}</span></div>
                     <div class="data-row"><span>Orbital Period:</span><span>${planet.period}</span></div>
                     <p class="planet-caption">${planet.desc}</p>
+                    ${videoHtml}
                 </div>
             `;
         });
