@@ -186,15 +186,21 @@
             border-bottom: 1px solid #21262d;
             font-size: 0.9rem;
         }
-        .render-link {
-            display: inline-block;
+        .video-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
             margin-top: 15px;
-            padding-top: 10px;
-            border-top: 1px dashed #30363d;
-            color: #7c4dff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* Rotoscope Tutorial Styling */
@@ -251,22 +257,6 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-        }
-        .video-container {
-            width: 100%;
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            margin-bottom: 10px;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
         }
 
         footer {
@@ -341,37 +331,38 @@
     <h1 style="margin-bottom: 1rem;">Rotoscope Tutorial & Progress</h1>
     
     <div class="tutorial-steps">
+        <!-- Tutorial steps 1-8 here -->
         <div class="step-item">
             <div class="step-header"><div class="step-number">1</div><div class="step-title">Select Source Material</div></div>
-            <p class="step-desc">Choose high-quality video with clear subject-background contrast and interesting movement patterns.</p>
+            <p class="step-desc">Choose high-quality video with clear subject-background contrast.</p>
         </div>
         <div class="step-item">
             <div class="step-header"><div class="step-number">2</div><div class="step-title">Cut the Video into 5-Second Clips</div></div>
-            <p class="step-desc">Use CapCut to split the selected video into 5-second segments for easier editing.</p>
+            <p class="step-desc">Use CapCut to split the selected video into 5-second segments.</p>
         </div>
         <div class="step-item">
             <div class="step-header"><div class="step-number">3</div><div class="step-title">Create a New Composition</div></div>
-            <p class="step-desc">In After Effects, create a separate 5-second composition for each clip segment.</p>
+            <p class="step-desc">In After Effects, create a separate 5-second composition for each clip.</p>
         </div>
         <div class="step-item">
             <div class="step-header"><div class="step-number">4</div><div class="step-title">Trace Each Layer</div></div>
-            <p class="step-desc">Isolate the subject into separate layers (shirt, pants, body, hair, shoes) using the Roto Brush Tool. Freeze each layer to edit others independently.</p>
+            <p class="step-desc">Isolate subject layers using the Roto Brush Tool.</p>
         </div>
         <div class="step-item">
             <div class="step-header"><div class="step-number">5</div><div class="step-title">Add Fill Colors to Layers</div></div>
-            <p class="step-desc">Apply solid color fills to each isolated layer (shirt, pants, hair, etc.) to prepare for stylization.</p>
+            <p class="step-desc">Apply solid color fills to each isolated layer.</p>
         </div>
         <div class="step-item">
             <div class="step-header"><div class="step-number">6</div><div class="step-title">Render All Compositions</div></div>
-            <p class="step-desc">Export each 5-second composition through the Render Queue with consistent settings.</p>
+            <p class="step-desc">Export each composition through the Render Queue.</p>
         </div>
         <div class="step-item">
             <div class="step-header"><div class="step-number">7</div><div class="step-title">Compile All 5-Second Clips</div></div>
-            <p class="step-desc">Combine all clips in CapCut, add audio, and export in mp4 format.</p>
+            <p class="step-desc">Combine all clips in CapCut and add audio.</p>
         </div>
         <div class="step-item">
             <div class="step-header"><div class="step-number">8</div><div class="step-title">Edit Lyrics & Background</div></div>
-            <p class="step-desc">Use Adobe Premiere Pro to add lyrics, sync them with the audio, and change background colors to enhance visual appeal.</p>
+            <p class="step-desc">Use Adobe Premiere Pro to add lyrics and change background colors.</p>
         </div>
     </div>
 
@@ -413,7 +404,7 @@
     }
 
     const planetData = [
-        { name: "Mercury", factor: 0.2408, period: "88 days", url: "https://youtu.be/mrUZM4u1I0E" },
+        { name: "Mercury", factor: 0.2408, period: "88 days", embedId: "mrUZM4u1I0E" },
         { name: "Venus", factor: 0.6152, period: "225 days" },
         { name: "Earth", factor: 1.0, period: "365.25 days" },
         { name: "Mars", factor: 1.8808, period: "687 days" },
@@ -429,14 +420,19 @@
         grid.innerHTML = '';
         planetData.forEach(planet => {
             const age = (earthAge / planet.factor).toFixed(4);
-            // Ensure link logic is robust
-            const linkHtml = planet.url ? `<a href="${planet.url}" target="_blank" class="render-link">📁 Watch Render Output</a>` : '';
+            // Render playable embed for Mercury
+            const embedHtml = planet.embedId ? 
+                `<div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/${planet.embedId}" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p style="font-size:0.75rem; color:#58a6ff; margin-top:8px; text-align:center;">Render Output</p>` : '';
+            
             grid.innerHTML += `
                 <div class="planet-card">
                     <h2>${planet.name}</h2>
                     <div class="data-row"><span>Age:</span><span>${age} yrs</span></div>
                     <div class="data-row"><span>Period:</span><span>${planet.period}</span></div>
-                    ${linkHtml}
+                    ${embedHtml}
                 </div>`;
         });
     }
