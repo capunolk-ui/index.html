@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multimedia Portfolio | Rotoscope & 3D</title>
+    <title>Multimedia Portfolio | Emmanuel Capuno</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             background: #0a0c10;
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             color: #eef2ff;
             line-height: 1.5;
         }
@@ -172,7 +172,7 @@
             font-size: 0.95rem;
         }
 
-        /* Layout for Sub-pages */
+        /* Sub-pages */
         .subpage-container {
             display: none;
             max-width: 1200px;
@@ -198,7 +198,7 @@
             border-color: #5a73b0;
         }
 
-        /* 3D SOLAR SYSTEM SPECIFIC STYLES */
+        /* 3D Solar System Styles */
         .system-dynamics-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -313,7 +313,7 @@
             text-decoration: underline;
         }
 
-        /* ROTOSCOPE SPECIFIC STYLES */
+        /* Rotoscope Specific Styles */
         .hero-section { background: linear-gradient(135deg, #10141c 0%, #0b0e14 100%); border-radius: 2rem; padding: 2rem; margin-bottom: 2rem; border: 1px solid #252a34; }
         .tools-row { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
         .tool-badge { background: #1a1e2a; padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.85rem; border: 1px solid #2d3548; }
@@ -344,7 +344,6 @@
 </head>
 <body>
 
-<!-- NAVIGATION BAR -->
 <div class="navbar">
     <div class="logo">🎨 Multimedia Portfolio</div>
     <div class="nav-links">
@@ -360,7 +359,7 @@
         <div class="hero-content">
             <h1>Multimedia & Authoring</h1>
             <h3>Rotoscope and 3D Rendering</h3>
-            <p>Exploring the art of rotoscoping and the realism of 3D rendering to create compelling visual narratives. Merging creativity with technology to bring motion and dimension to digital storytelling.</p>
+            <p>Showcasing the journey from frame-by-frame tracing to orbital mathematical visualizations. A collection of works for the BSIT program at TUP.</p>
         </div>
     </section>
 
@@ -377,7 +376,7 @@
                 <div class="card-content">
                     <div class="card-badge">3D RENDERING</div>
                     <h2>3D Solar System</h2>
-                    <p>Interactive 3D rendering of planets involving realistic textures, lighting, and an orbital time calculator.</p>
+                    <p>Calculated orbital mechanics and 3D textures in Blender. Includes a custom age-to-planetary-year converter.</p>
                 </div>
             </div>
 
@@ -389,7 +388,7 @@
                 <div class="card-content">
                     <div class="card-badge">ROTOSCOPE</div>
                     <h2>1-minute Video Rotoscope</h2>
-                    <p>Video rotoscoping technique where artists trace over footage frame by frame to isolate subjects.</p>
+                    <p>A deep dive into frame-by-frame animation, isolating subjects and layering digital paint over real footage.</p>
                 </div>
             </div>
         </div>
@@ -399,24 +398,23 @@
 <!-- ========== 3D SOLAR SYSTEM PAGE ========== -->
 <div id="solarPage" class="subpage-container">
     <div class="back-home-btn" onclick="showHome()">← Back to Home</div>
-
     <h1 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 1rem;">System Dynamics.</h1>
     
     <div class="system-dynamics-grid">
         <div class="dynamic-card">
             <h5>Tools</h5>
             <h4>Software Stack</h4>
-            <p>Pipeline used Blender for scene building, keyframing, and rendering, with lightweight post-editing.</p>
+            <p>Blender for modeling and rendering, combined with mathematical logic for orbital scaling.</p>
         </div>
         <div class="dynamic-card">
             <h5>Design</h5>
             <h4>Visual Objective</h4>
-            <p>Emphasizes smooth orbital paths, clear focal points, and readable scale relationships between bodies.</p>
+            <p>Realism in textures while maintaining a clean UI for the data overlay.</p>
         </div>
         <div class="dynamic-card">
             <h5>Build</h5>
             <h4>Key Features</h4>
-            <p>Final output includes animated camera travel, lighting, and an interactive data calculator below.</p>
+            <p>Animated orbital paths, dynamic lighting, and integrated planetary year calculations.</p>
         </div>
     </div>
 
@@ -425,16 +423,15 @@
             <h5 style="color: #7c4dff; margin-bottom: 1rem;">DEVELOPMENT</h5>
             <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Production specifics</h3>
             <ul style="color: #8b949e; list-style-type: disc; padding-left: 1.2rem;">
-                <li style="margin-bottom: 1rem;">Orbital paths were blocked first to lock scene rhythm before camera passes.</li>
-                <li style="margin-bottom: 1rem;">Lighting was tuned for silhouette clarity so each planet remains identifiable.</li>
-                <li>Render output was exported at presentation-friendly resolution.</li>
+                <li style="margin-bottom: 1rem;">Orbital paths blocked before camera movement.</li>
+                <li style="margin-bottom: 1rem;">Lighting tuned for silhouette clarity.</li>
+                <li>Final high-res render exported for presentation.</li>
             </ul>
         </div>
 
         <div class="spec-box calc-box">
             <h5 style="color: #7c4dff; margin-bottom: 0.5rem;">INTERACTIVE LAYER</h5>
             <h3 style="font-size: 1.5rem;">Planetary Time Calculator</h3>
-            <p style="color: #8b949e; font-size: 0.9rem; margin-top: 0.5rem;">This utility converts Earth years into equivalent planetary years. Enter a number below to update the grid.</p>
             <div class="calc-input-group">
                 <input type="number" id="ageInput" value="1" min="0">
                 <button class="calc-btn" onclick="updatePlanets()">Calculate</button>
@@ -443,19 +440,16 @@
     </div>
 
     <h2 style="font-size: 2rem; margin-bottom: 2rem;">Celestial Data Output</h2>
-    <div class="celestial-grid" id="planetGrid">
-        <!-- Planets injected by JavaScript -->
-    </div>
+    <div class="celestial-grid" id="planetGrid"></div>
 </div>
 
-<!-- ========== ROTOSCOPE TUTORIAL PAGE ========== -->
+<!-- ========== ROTOSCOPE PAGE ========== -->
 <div id="rotoPage" class="subpage-container">
     <div class="back-home-btn" onclick="showHome()">← Back to Home</div>
 
     <div class="hero-section">
         <div class="card-badge">✦ ROTOSCOPE PROJECT</div>
         <h1 style="font-size:2.5rem; margin-top:0.5rem;">1-Minute Rotoscope Video</h1>
-        <p style="color:#a9b7d4;">A frame-by-frame animation created using the tracing technique in After Effects.</p>
         <div class="tools-row">
             <span class="tool-badge">🎬 Adobe After Effects</span>
             <span class="tool-badge">✂️ Adobe Premiere Pro</span>
@@ -471,21 +465,21 @@
                     <span class="step-number">1</span>
                     <span style="font-weight:600; color:#cbd5ff;">Select Source Material</span>
                 </div>
-                <p style="color:#8b949e; font-size:0.9rem; margin-top:0.5rem;">Choose high-quality video with clear subject-background contrast.</p>
+                <p style="color:#8b949e; font-size:0.9rem; margin-top:0.5rem;">High contrast footage makes the tracing process much cleaner.</p>
             </div>
             <div class="step-item">
                 <div style="display:flex; align-items:center;">
                     <span class="step-number">2</span>
                     <span style="font-weight:600; color:#cbd5ff;">Trace & Fill</span>
                 </div>
-                <p style="color:#8b949e; font-size:0.9rem; margin-top:0.5rem;">Isolate segments (shirt, hair, shoes) using the Roto Brush tool.</p>
+                <p style="color:#8b949e; font-size:0.9rem; margin-top:0.5rem;">Isolating key features frame-by-frame to create the animation.</p>
             </div>
             <div class="step-item">
                 <div style="display:flex; align-items:center;">
                     <span class="step-number">3</span>
                     <span style="font-weight:600; color:#cbd5ff;">Final Compilation</span>
                 </div>
-                <p style="color:#8b949e; font-size:0.9rem; margin-top:0.5rem;">Sync with audio and add lyrics in Premiere Pro.</p>
+                <p style="color:#8b949e; font-size:0.9rem; margin-top:0.5rem;">Syncing the final frames with audio and effects.</p>
             </div>
         </div>
 
@@ -503,16 +497,21 @@
                 </div>
                 <p style="color:#8b949e; font-size:0.8rem; margin-top:0.8rem; text-align:center;">Week 2 - Color Blocking</p>
             </div>
+            <div class="week-video-card">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/sJ_EoF-0uwI" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p style="color:#8b949e; font-size:0.8rem; margin-top:0.8rem; text-align:center;">Week 3 - Final Rotoscope Output</p>
+            </div>
         </div>
     </div>
 </div>
 
 <footer>
-    <span>© 2026 Emmanuel C. Capuno — BSIT-S-T-2A. All rights reserved.</span>
+    <span>© 2026 Emmanuel C. Capuno — BSIT-S-T-2A</span>
 </footer>
 
 <script>
-    // Navigation Functions
     function showHome() {
         document.getElementById('homePage').style.display = 'block';
         document.getElementById('solarPage').style.display = 'none';
@@ -524,7 +523,7 @@
         document.getElementById('solarPage').style.display = 'block';
         document.getElementById('rotoPage').style.display = 'none';
         window.scrollTo(0,0);
-        updatePlanets(); // Initial load
+        updatePlanets();
     }
     function showRoto() {
         document.getElementById('homePage').style.display = 'none';
@@ -533,22 +532,21 @@
         window.scrollTo(0,0);
     }
 
-    // Solar System Data & Logic
     const planetData = [
         { 
             name: "Mercury", 
             factor: 0.2408, 
             period: "88 Earth days", 
-            desc: "Smallest and fastest planet, with dramatic temperature swings.",
-            videoLink: "file:///C:/tmp/0001-0150.mkv" // Local file path added here
+            desc: "Smallest and fastest planet.",
+            videoLink: "https://youtu.be/mrUZM4u1I0E" 
         },
-        { name: "Venus", factor: 0.6152, period: "225 Earth days", desc: "Earth's twin, shaped by a thick atmosphere and extreme heat." },
-        { name: "Earth", factor: 1.0, period: "365.25 Earth days", desc: "Our reference planet and the only known world with life." },
-        { name: "Mars", factor: 1.8808, period: "687 Earth days", desc: "A cold desert planet known for iron-rich terrain." },
-        { name: "Jupiter", factor: 11.86, period: "11.86 Earth yrs", desc: "The largest gas giant, defined by immense storms and strong gravity." },
-        { name: "Saturn", factor: 29.45, period: "29.45 Earth yrs", desc: "A ringed giant known for striking banding and an iconic silhouette." },
-        { name: "Uranus", factor: 84.02, period: "84.02 Earth yrs", desc: "An ice giant that rotates on its side, giving it an unusual character." },
-        { name: "Neptune", factor: 164.79, period: "164.79 Earth yrs", desc: "A deep blue giant known for powerful winds and distant orbiting." }
+        { name: "Venus", factor: 0.6152, period: "225 Earth days", desc: "Earth's twin with extreme heat." },
+        { name: "Earth", factor: 1.0, period: "365.25 Earth days", desc: "Our home planet." },
+        { name: "Mars", factor: 1.8808, period: "687 Earth days", desc: "The red desert planet." },
+        { name: "Jupiter", factor: 11.86, period: "11.86 Earth yrs", desc: "The largest gas giant." },
+        { name: "Saturn", factor: 29.45, period: "29.45 Earth yrs", desc: "Known for its striking rings." },
+        { name: "Uranus", factor: 84.02, period: "84.02 Earth yrs", desc: "An ice giant rotating on its side." },
+        { name: "Neptune", factor: 164.79, period: "164.79 Earth yrs", desc: "The most distant blue giant." }
     ];
 
     function updatePlanets() {
@@ -558,17 +556,14 @@
 
         planetData.forEach(planet => {
             const planetAge = (earthAge / planet.factor).toFixed(4);
-            
-            // Check if this planet (Mercury) has a video link
             const videoHtml = planet.videoLink 
-                ? `<a href="${planet.videoLink}" class="render-link">📁 Watch Render: 0001-0150.mkv</a>` 
+                ? `<a href="${planet.videoLink}" target="_blank" class="render-link">📁 Watch Render: 0001-0150.mkv</a>` 
                 : '';
 
             grid.innerHTML += `
                 <div class="planet-card">
                     <h2>${planet.name}</h2>
-                    <div class="data-row"><span>Age:</span><span>${planetAge} yrs</span></div>
-                    <div class="data-row"><span>Revolutions:</span><span>${planetAge}</span></div>
+                    <div class="data-row"><span>Age/Revs:</span><span>${planetAge}</span></div>
                     <div class="data-row"><span>Orbital Period:</span><span>${planet.period}</span></div>
                     <p class="planet-caption">${planet.desc}</p>
                     ${videoHtml}
@@ -577,9 +572,7 @@
         });
     }
 
-    // Default View
     showHome();
 </script>
-
 </body>
 </html>
