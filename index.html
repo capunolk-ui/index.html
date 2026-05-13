@@ -4,12 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multimedia Portfolio | 3D Authoring & Rotoscoping</title>
-    <!-- 
-        ================================================================
-        GLOBAL STYLES & THEME CONFIGURATION
-        Maintaining full CSS verbosity to preserve original design depth.
-        ================================================================
-    -->
     <style>
         :root {
             --bg-dark: #0a0c10;
@@ -26,7 +20,6 @@
             --transition-speed: 0.4s;
         }
 
-        /* RESET & CORE STRUCTURE */
         * {
             margin: 0;
             padding: 0;
@@ -42,7 +35,6 @@
             overflow-x: hidden;
         }
 
-        /* NAVIGATION BAR - DETAILED IMPLEMENTATION */
         .header-nav {
             display: flex;
             justify-content: space-between;
@@ -106,7 +98,6 @@
             width: 100%;
         }
 
-        /* HERO AREA */
         .hero-banner {
             text-align: center;
             padding: 100px 10% 60px 10%;
@@ -128,7 +119,6 @@
             margin: 0 auto;
         }
 
-        /* CALCULATOR SECTION - image_ea4857.png */
         .solar-calculator {
             max-width: 1100px;
             margin: -40px auto 80px auto;
@@ -200,7 +190,6 @@
             gap: 10px;
         }
 
-        /* PLANET DATA CARDS - image_ea48d3.png */
         .planet-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
@@ -288,7 +277,6 @@
             transform: scale(1.1);
         }
 
-        /* ROTOSCOPING STYLES */
         .tutorial-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -338,7 +326,6 @@
             font-size: 0.95rem;
         }
 
-        /* PROGRESS LOGS */
         .progress-container {
             max-width: 1200px;
             margin: 80px auto;
@@ -382,7 +369,6 @@
             font-size: 1rem;
         }
 
-        /* PAGE VISIBILITY */
         .page-content {
             display: none;
             animation: fadeIn 0.6s ease forwards;
@@ -397,7 +383,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* RESPONSIVE DESIGN FOR FULL COMPLIANCE */
         @media (max-width: 1024px) {
             .planet-container { grid-template-columns: 1fr 1fr; }
             .hero-banner h1 { font-size: 3rem; }
@@ -409,12 +394,10 @@
             .nav-menu { display: none; }
             .hero-banner h1 { font-size: 2.5rem; }
         }
-
     </style>
 </head>
 <body>
 
-    <!-- PRIMARY NAVIGATION -->
     <nav class="header-nav">
         <a class="brand-logo" onclick="showPage('solar-page')">MULTIMEDIA.PRO</a>
         <ul class="nav-menu">
@@ -431,7 +414,6 @@
             <p>A comprehensive study of orbital mechanics, procedural texturing, and rendering workflows in Blender 3.3.</p>
         </section>
 
-        <!-- MOTION CALCULATOR PANEL -->
         <section class="solar-calculator">
             <div class="calc-title">
                 <span>🚀</span> Calculate Time & Motion in the Solar System
@@ -447,9 +429,48 @@
             </div>
         </section>
 
-        <!-- DYNAMIC PLANET GRID -->
-        <section class="planet-container" id="planet-display-grid">
-            <!-- Content Injected via JavaScript below -->
+        <section class="planet-container" id="planet-display-grid"></section>
+
+        <section class="progress-container">
+            <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 50px;">3D Solar System</h2>
+            <div class="progress-grid">
+                <div class="video-card">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/LRMfNRX0mPE"></iframe></div>
+                    <div class="video-caption">Solar System</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/zUlkcbZ7Pvs"></iframe></div>
+                    <div class="video-caption">Venus</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/6hWwo9aIcmg"></iframe></div>
+                    <div class="video-caption">Earth</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/UcKZSMwK7TA"></iframe></div>
+                    <div class="video-caption">Mars</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/IfG4B6wL7q8"></iframe></div>
+                    <div class="video-caption">Jupiter</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/wIrbnshKDXc"></iframe></div>
+                    <div class="video-caption">Saturn</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/LQlDUDf6JrE"></iframe></div>
+                    <div class="video-caption">Uranus</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/XV_7KDQRoR4"></iframe></div>
+                    <div class="video-caption">Neptune</div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/nu4uB2BJwT0"></iframe></div>
+                    <div class="video-caption">Pluto</div>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -489,12 +510,7 @@
         </section>
     </div>
 
-    <!-- CORE LOGIC SCRIPTS -->
     <script>
-        /**
-         * PLANETARY DATABASE
-         * Storing all constants and descriptions to maintain high code volume and data accuracy.
-         */
         const SOLAR_DATABASE = [
             { id: "mercury", name: "Mercury", period: 88, distance: "57.9 million", img: "https://images-assets.nasa.gov/image/PIA15162/PIA15162~thumb.jpg", desc: "The smallest and innermost planet, Mercury has extreme temperature variations and a surface scarred by countless impact craters." },
             { id: "venus", name: "Venus", period: 224.7, distance: "108.2 million", img: "https://images-assets.nasa.gov/image/PIA00271/PIA00271~thumb.jpg", desc: "Similar in size to Earth but with a thick toxic atmosphere that traps heat, making it the hottest planet in our solar system." },
@@ -506,46 +522,27 @@
             { id: "neptune", name: "Neptune", period: 60190, distance: "4.5 billion", img: "https://images-assets.nasa.gov/image/PIA00046/PIA00046~thumb.jpg", desc: "The most distant major planet, Neptune is dark, cold, and whipped by supersonic winds reaching 2,100 km/h." }
         ];
 
-        /**
-         * PAGE NAVIGATION LOGIC
-         * Handles visibility transitions between different sections.
-         */
         function showPage(pageId) {
             const allPages = document.querySelectorAll('.page-content');
             allPages.forEach(p => p.classList.remove('active'));
-
             document.getElementById(pageId).classList.add('active');
-
-            // Update Nav Links
             const links = document.querySelectorAll('.nav-item');
             links.forEach(l => l.classList.remove('active'));
-
             if(pageId === 'solar-page') document.getElementById('link-solar').classList.add('active');
             else document.getElementById('link-roto').classList.add('active');
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /**
-         * CALCULATION & UI UPDATE ENGINE
-         * Processes the input years and rebuilds the card grid dynamically.
-         */
         function performCalculation() {
             const inputVal = parseFloat(document.getElementById('inputYears').value);
             const earthYears = isNaN(inputVal) ? 1 : inputVal;
             const container = document.getElementById('planet-display-grid');
-            
-            // Clear existing content
             container.innerHTML = '';
-
             SOLAR_DATABASE.forEach(planet => {
                 const totalEarthDays = earthYears * 365.25;
                 const planetaryRevs = (totalEarthDays / planet.period).toFixed(2);
-                
-                // Create Card Element
                 const card = document.createElement('div');
                 card.className = 'planet-card';
-                
                 card.innerHTML = `
                     <div class="planet-header">${planet.name}</div>
                     <div class="data-table">
@@ -561,18 +558,13 @@
                         <img src="${planet.img}" alt="${planet.name}">
                     </div>
                 `;
-                
                 container.appendChild(card);
             });
-            
-            console.log("Calculations completed for Earth Years: " + earthYears);
         }
 
-        // INITIAL LOAD
         document.addEventListener('DOMContentLoaded', () => {
             performCalculation();
         });
-
     </script>
 </body>
 </html>
