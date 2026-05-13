@@ -1,144 +1,363 @@
-<!-- SAME HTML ABOVE — UNCHANGED UNTIL <script> -->
-
-<script>
-    function showHome() {
-        document.getElementById('homePage').style.display = 'block';
-        document.getElementById('solarPage').style.display = 'none';
-        document.getElementById('rotoPage').style.display = 'none';
-    }
-    function showSolar() {
-        document.getElementById('homePage').style.display = 'none';
-        document.getElementById('solarPage').style.display = 'block';
-        updatePlanets();
-    }
-    function showRoto() {
-        document.getElementById('homePage').style.display = 'none';
-        document.getElementById('rotoPage').style.display = 'block';
-    }
-
-    const planetData = [
-        {
-            name: "Solar System",
-            factor: 1,
-            period: "—",
-            distance: "—",
-            desc: "Complete orbital simulation of the solar system.",
-            img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa",
-            embedId: "LRMfNRX0mPE"
-        },
-        {
-            name: "Mercury",
-            factor: 0.2408,
-            period: "88 days",
-            distance: "57.9 million km",
-            desc: "Smallest planet with extreme temperature variation.",
-            img: "https://solarsystem.nasa.gov/system/feature_items/images/18_mercury_new.png",
-            embedId: "mrUZM4u1I0E"
-        },
-        {
-            name: "Venus",
-            factor: 0.6152,
-            period: "225 days",
-            distance: "108.2 million km",
-            desc: "Hottest planet with dense toxic atmosphere.",
-            img: "https://solarsystem.nasa.gov/system/feature_items/images/27_venus_jg.png",
-            embedId: "zUlkcbZ7Pvs"
-        },
-        {
-            name: "Earth",
-            factor: 1,
-            period: "365.25 days",
-            distance: "149.6 million km",
-            desc: "Reference planet supporting life.",
-            img: "https://solarsystem.nasa.gov/system/feature_items/images/17_earth.png",
-            embedId: "6hWwo9aIcmg"
-        },
-        {
-            name: "Mars",
-            factor: 1.8808,
-            period: "687 days",
-            distance: "227.9 million km",
-            desc: "The red planet with the tallest volcano.",
-            img: "https://solarsystem.nasa.gov/system/feature_items/images/19_mars.png",
-            embedId: "UcKZSMwK7TA"
-        },
-        {
-            name: "Jupiter",
-            factor: 11.86,
-            period: "11.86 yrs",
-            distance: "778.5 million km",
-            desc: "Largest gas giant with powerful storms.",
-            img: "https://solarsystem.nasa.gov/system/feature_items/images/16_jupiter_new.png",
-            embedId: "IfG4B6wL7q8"
-        },
-        {
-            name: "Saturn",
-            factor: 29.45,
-            period: "29.45 yrs",
-            distance: "1.4 billion km",
-            desc: "Gas giant famous for its rings.",
-            img: "https://solarsystem.nasa.gov/system/feature_items/images/28_saturn.png",
-            embedId: "wIrbnshKDXc"
-        },
-        {
-            name: "Uranus",
-            factor: 84.02,
-            period: "84.02 yrs",
-            distance: "2.9 billion km",
-            desc: "Ice giant rotating on its side.",
-            img: "https://solarsystem.nasa.gov/system/feature_items/images/29_uranus.png",
-            embedId: "LQlDUDf6JrE"
-        },
-        {
-            name: "Neptune",
-            factor: 164.79,
-            period: "164.79 yrs",
-            distance: "4.5 billion km",
-            desc: "Windiest planet in the solar system.",
-            img: "https://solarsystem.nasa.gov/system/feature_items/images/30_neptune.png",
-            embedId: "XV_7KDQRoR4"
-        },
-        {
-            name: "Pluto",
-            factor: 248,
-            period: "248 yrs",
-            distance: "5.9 billion km",
-            desc: "Dwarf planet in the Kuiper belt.",
-            img: "https://solarsystem.nasa.gov/system/feature_items/images/147_PIA19952.jpg",
-            embedId: "nu4uB2BJwT0"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            background: #0a0c10;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #eef2ff;
+            line-height: 1.5;
+            margin: 0;
         }
-    ];
 
-    function updatePlanets() {
-        const earthAge = parseFloat(document.getElementById('ageInput').value) || 0;
-        const grid = document.getElementById('planetGrid');
-        grid.innerHTML = '';
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 8%;
+            background: #0d1117cc;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #21262d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #58a6ff, #a371f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #c9d1d9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
 
-        planetData.forEach(planet => {
-            const age = (earthAge / planet.factor).toFixed(4);
-            const revolutions = (earthAge / planet.factor).toFixed(2);
+        /* Hero section */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 8%;
+            background: linear-gradient(125deg, rgba(13,17,23,0.92), rgba(13,17,23,0.98)),
+            url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=1600')
+            center/cover no-repeat;
+            border-bottom: 1px solid #21262d;
+        }
+        .hero-content {
+            max-width: 800px;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            background: linear-gradient(120deg, #ffffff, #90a9ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .hero h3 {
+            font-size: 1.6rem;
+            color: #79c0ff;
+            margin: 1rem 0;
+            font-weight: 500;
+        }
+        .hero p {
+            color: #b1bac4;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
 
-            grid.innerHTML += `
-                <div class="planet-card">
-                    <h2>${planet.name}</h2>
+        /* Project grid */
+        .page-section {
+            padding: 80px 8%;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .project-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: #58a6ff;
+            box-shadow: 0 18px 32px -12px rgba(88,166,255,0.2);
+        }
+        .card-media {
+            background: #0f121b;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: 1px solid #21262d;
+        }
+        .card-media img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 1.6rem;
+        }
+        .card-badge {
+            display: inline-block;
+            background: #1f2a3e;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #7aa2f7;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.3px;
+        }
 
-                    <div class="data-row"><span>Age:</span><span>${age} yrs</span></div>
-                    <div class="data-row"><span>Revolutions:</span><span>${revolutions}</span></div>
-                    <div class="data-row"><span>Orbital Period:</span><span>${planet.period}</span></div>
-                    <div class="data-row"><span>Distance from Sun:</span><span>${planet.distance}</span></div>
+        /* Sub-pages */
+        .subpage-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        .back-home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1a1f2c;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: 1px solid #2e3a55;
+            margin-bottom: 2rem;
+            transition: 0.2s;
+            color: #8eabf0;
+            text-decoration: none;
+        }
 
-                    <p style="margin-top:10px; font-size:0.85rem; color:#8b949e;">
-                        <strong>Description:</strong> ${planet.desc}
-                    </p>
+        /* 3D Solar Styles */
+        .celestial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .planet-card {
+            background: #0d1117;
+            border: 1px solid #21262d;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #21262d;
+            font-size: 0.9rem;
+        }
+        .video-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-                    <img src="${planet.img}" style="width:100%; border-radius:12px; margin-top:12px;">
+        /* Rotoscope Tutorial Styling */
+        .tutorial-steps {
+            background: #0d1117;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #242a35;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .step-item {
+            background: #0b0f16;
+            border-radius: 1.25rem;
+            padding: 1.2rem;
+            border: 1px solid #1c212c;
+        }
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        .step-number {
+            background: #3b5b9b;
+            color: white;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 800;
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+        .step-title {
+            font-weight: 600;
+            color: #58a6ff;
+        }
+        .step-desc {
+            color: #8b949e;
+            font-size: 0.85rem;
+        }
 
+        .weekly-progress {
+            background: #0d1117;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #242a35;
+            margin-top: 2rem;
+        }
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid #1e2432;
+            color: #6c7aa3;
+            font-size: 0.8rem;
+            background: #0b0f16;
+        }
+
+        @media (max-width: 900px) {
+            .celestial-grid, .tutorial-steps, .progress-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">CREATIVE PORTFOLIO</div>
+        <div class="nav-links">
+            <a href="#">Work</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Creative Developer</h1>
+            <h3>3D RENDERING & VISUAL ARTS</h3>
+            <p>Exploring the intersection of digital space and traditional motion.</p>
+        </div>
+    </section>
+
+    <div class="subpage-container">
+        <a href="#" class="back-home-btn">← Back to Projects</a>
+        
+        <h2 style="margin-bottom: 2rem;">3D Solar System Project</h2>
+
+        <!-- PROJECT CONTENT START -->
+        <div class="celestial-grid">
+            <!-- New Planet Links Section -->
+            <div class="planet-card">
+                <h3 style="color: #58a6ff; margin-top: 0;">Planet Exploration</h3>
+                <div class="data-row"><span>VENUS:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Venus</a></div>
+                <div class="data-row"><span>EARTH:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Earth</a></div>
+                <div class="data-row"><span>MARS:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Mars</a></div>
+                <div class="data-row"><span>JUPITER:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Jupiter</a></div>
+                <div class="data-row"><span>SATURN:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Saturn</a></div>
+                <div class="data-row"><span>URANUS:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Uranus</a></div>
+                <div class="data-row"><span>NEPTUNE:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Neptune</a></div>
+                <div class="data-row"><span>PLUTO:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Pluto</a></div>
+            </div>
+
+            <!-- Solar System Video Section -->
+            <div class="planet-card">
+                <h3 style="color: #58a6ff; margin-top: 0;">3D Solar System Render</h3>
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/libKVRa01L8" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p style="font-size: 0.85rem; color: #8b949e; margin-top: 1rem;">
+                    Full orbital simulation with accurate axial tilts and rotational periods.
+                </p>
+            </div>
+        </div>
+        <!-- PROJECT CONTENT END -->
+
+        <div class="weekly-progress">
+            <h3>📅 Weekly Progress</h3>
+            <div class="progress-grid">
+                <div class="step-item">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/${planet.embedId}" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/example1" frameborder="0" allowfullscreen></iframe>
                     </div>
-                </div>`;
-        });
-    }
+                    <p style="text-align: center; margin-top: 10px;">Week 1 - Outlining</p>
+                </div>
+                <div class="step-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/example2" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <p style="text-align: center; margin-top: 10px;">Week 2 - Color Blocking</p>
+                </div>
+                <div class="step-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/example3" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <p style="text-align: center; margin-top: 10px;">Week 3 - Final Output</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    showHome();
-</script>
+    <footer>
+        <p>&copy; 2026 Creative Portfolio. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
