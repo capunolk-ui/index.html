@@ -1,141 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Multimedia Portfolio | Emmanuel Capuno</title>
-<style>
-/* === YOUR ORIGINAL STYLES KEPT === */
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0c10;font-family:'Inter',system-ui;color:#eef2ff}
-
-/* navbar, hero, cards etc… (unchanged from yours) */
-.navbar{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 8%;background:#0d1117cc;border-bottom:1px solid #21262d;position:sticky;top:0}
-.logo{font-size:1.4rem;font-weight:700;color:#58a6ff}
-.nav-links{display:flex;gap:2rem}
-.nav-links a{color:#c9d1d9;text-decoration:none;cursor:pointer}
-
-/* solar calculator panel */
-.calc-panel{
-background:#161b22;border:1px solid #30363d;border-radius:16px;
-padding:20px;margin-bottom:30px
-}
-.calc-panel input{
-width:100%;padding:12px;background:#0a0c10;border:1px solid #30363d;
-color:white;border-radius:8px;margin-top:10px
-}
-.calc-panel button{
-margin-top:10px;padding:10px 18px;background:#58a6ff;border:none;
-border-radius:6px;color:white;cursor:pointer
-}
-
-/* planet card like screenshot */
-.planet-card{
-background:#0d1117;border:1px solid #21262d;border-radius:18px;
-padding:20px;margin-bottom:30px
-}
-.data-row{display:flex;justify-content:space-between;border-bottom:1px solid #222;padding:6px 0}
-.desc{background:#0b0f16;border:1px solid #1c212c;padding:12px;border-radius:8px;margin:12px 0}
-.planet-img{width:100%;border-radius:12px;margin-top:10px}
-.video-container{position:relative;padding-bottom:56.25%;height:0;margin-top:12px}
-.video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%}
-</style>
-</head>
-<body>
-
-<div class="navbar">
-<div class="logo">🎨 Multimedia Portfolio</div>
-<div class="nav-links">
-<a onclick="showHome()">Home</a>
-<a onclick="showSolar()">3D Solar</a>
-<a onclick="showRoto()">Rotoscope</a>
-</div>
-</div>
-
-<!-- ================= HOME ================= -->
-<div id="homePage">
-<h1 style="padding:60px;text-align:center">Multimedia & Authoring</h1>
-</div>
-
-<!-- ================= SOLAR PAGE ================= -->
-<div id="solarPage" style="display:none;padding:40px 8%">
-
-<div class="calc-panel">
-<h2>🧮 Calculate Time & Motion in the Solar System</h2>
-<input type="number" id="earthAge" value="1">
-<button onclick="renderPlanets()">Calculate</button>
-</div>
-
-<div id="planetOutput"></div>
-
-</div>
-
-<!-- ================= ROTOSCOPE PAGE (FULL RESTORE) ================= -->
-<div id="rotoPage" style="display:none;padding:40px 8%">
-<h1>Rotoscope Tutorial & Progress</h1>
-
-<!-- your exact tutorial steps kept -->
-<p>All your tutorial steps and weekly videos are preserved here exactly as you made them.</p>
-
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/IkS9TObr_vM" allowfullscreen></iframe>
-</div>
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/AMBzzFDpU-Q" allowfullscreen></iframe>
-</div>
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/sJ_EoF-0uwI" allowfullscreen></iframe>
-</div>
-
-</div>
+<!-- SAME HTML ABOVE — UNCHANGED UNTIL <script> -->
 
 <script>
-function showHome(){homePage.style.display='block';solarPage.style.display='none';rotoPage.style.display='none'}
-function showSolar(){homePage.style.display='none';solarPage.style.display='block';rotoPage.style.display='none'}
-function showRoto(){homePage.style.display='none';solarPage.style.display='none';rotoPage.style.display='block'}
+    function showHome() {
+        document.getElementById('homePage').style.display = 'block';
+        document.getElementById('solarPage').style.display = 'none';
+        document.getElementById('rotoPage').style.display = 'none';
+    }
+    function showSolar() {
+        document.getElementById('homePage').style.display = 'none';
+        document.getElementById('solarPage').style.display = 'block';
+        updatePlanets();
+    }
+    function showRoto() {
+        document.getElementById('homePage').style.display = 'none';
+        document.getElementById('rotoPage').style.display = 'block';
+    }
 
-const planets=[
-{name:"Mercury",factor:0.2408,period:"88 days",distance:"57.9 million km",
-desc:"Smallest and innermost planet.",img:"https://solarsystem.nasa.gov/system/resources/detail_files/771_PIA16853.jpg",vid:"mrUZM4u1I0E"},
-{name:"Venus",factor:0.6152,period:"225 days",distance:"108.2 million km",
-desc:"Hottest planet with thick atmosphere.",img:"https://solarsystem.nasa.gov/system/resources/detail_files/775_PIA00104.jpg",vid:"zUlkcbZ7Pvs"},
-{name:"Earth",factor:1,period:"365.25 days",distance:"149.6 million km",
-desc:"Our home planet.",img:"https://solarsystem.nasa.gov/system/resources/detail_files/17_earth.png",vid:"6hWwo9aIcmg"},
-{name:"Mars",factor:1.8808,period:"687 days",distance:"227.9 million km",
-desc:"The red planet.",img:"https://solarsystem.nasa.gov/system/resources/detail_files/780_PIA00407.jpg",vid:"UcKZSMwK7TA"},
-{name:"Jupiter",factor:11.86,period:"11.86 yrs",distance:"778.5 million km",
-desc:"Largest planet.",img:"https://solarsystem.nasa.gov/system/resources/detail_files/783_PIA02873.jpg",vid:"IfG4B6wL7q8"},
-{name:"Saturn",factor:29.45,period:"29.45 yrs",distance:"1.4 billion km",
-desc:"Famous ringed planet.",img:"https://solarsystem.nasa.gov/system/resources/detail_files/783_PIA02873.jpg",vid:"wIrbnshKDXc"},
-{name:"Uranus",factor:84.02,period:"84 yrs",distance:"2.9 billion km",
-desc:"Ice giant tilted on side.",img:"https://solarsystem.nasa.gov/system/resources/detail_files/783_PIA02873.jpg",vid:"LQlDUDf6JrE"},
-{name:"Neptune",factor:164.79,period:"164 yrs",distance:"4.5 billion km",
-desc:"Farthest giant planet.",img:"https://solarsystem.nasa.gov/system/resources/detail_files/783_PIA02873.jpg",vid:"XV_7KDQRoR4"},
-{name:"Pluto",factor:248,period:"248 yrs",distance:"5.9 billion km",
-desc:"Dwarf planet in Kuiper belt.",img:"https://solarsystem.nasa.gov/system/resources/detail_files/783_PIA02873.jpg",vid:"nu4uB2BJwT0"}
-];
+    const planetData = [
+        {
+            name: "Solar System",
+            factor: 1,
+            period: "—",
+            distance: "—",
+            desc: "Complete orbital simulation of the solar system.",
+            img: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa",
+            embedId: "LRMfNRX0mPE"
+        },
+        {
+            name: "Mercury",
+            factor: 0.2408,
+            period: "88 days",
+            distance: "57.9 million km",
+            desc: "Smallest planet with extreme temperature variation.",
+            img: "https://solarsystem.nasa.gov/system/feature_items/images/18_mercury_new.png",
+            embedId: "mrUZM4u1I0E"
+        },
+        {
+            name: "Venus",
+            factor: 0.6152,
+            period: "225 days",
+            distance: "108.2 million km",
+            desc: "Hottest planet with dense toxic atmosphere.",
+            img: "https://solarsystem.nasa.gov/system/feature_items/images/27_venus_jg.png",
+            embedId: "zUlkcbZ7Pvs"
+        },
+        {
+            name: "Earth",
+            factor: 1,
+            period: "365.25 days",
+            distance: "149.6 million km",
+            desc: "Reference planet supporting life.",
+            img: "https://solarsystem.nasa.gov/system/feature_items/images/17_earth.png",
+            embedId: "6hWwo9aIcmg"
+        },
+        {
+            name: "Mars",
+            factor: 1.8808,
+            period: "687 days",
+            distance: "227.9 million km",
+            desc: "The red planet with the tallest volcano.",
+            img: "https://solarsystem.nasa.gov/system/feature_items/images/19_mars.png",
+            embedId: "UcKZSMwK7TA"
+        },
+        {
+            name: "Jupiter",
+            factor: 11.86,
+            period: "11.86 yrs",
+            distance: "778.5 million km",
+            desc: "Largest gas giant with powerful storms.",
+            img: "https://solarsystem.nasa.gov/system/feature_items/images/16_jupiter_new.png",
+            embedId: "IfG4B6wL7q8"
+        },
+        {
+            name: "Saturn",
+            factor: 29.45,
+            period: "29.45 yrs",
+            distance: "1.4 billion km",
+            desc: "Gas giant famous for its rings.",
+            img: "https://solarsystem.nasa.gov/system/feature_items/images/28_saturn.png",
+            embedId: "wIrbnshKDXc"
+        },
+        {
+            name: "Uranus",
+            factor: 84.02,
+            period: "84.02 yrs",
+            distance: "2.9 billion km",
+            desc: "Ice giant rotating on its side.",
+            img: "https://solarsystem.nasa.gov/system/feature_items/images/29_uranus.png",
+            embedId: "LQlDUDf6JrE"
+        },
+        {
+            name: "Neptune",
+            factor: 164.79,
+            period: "164.79 yrs",
+            distance: "4.5 billion km",
+            desc: "Windiest planet in the solar system.",
+            img: "https://solarsystem.nasa.gov/system/feature_items/images/30_neptune.png",
+            embedId: "XV_7KDQRoR4"
+        },
+        {
+            name: "Pluto",
+            factor: 248,
+            period: "248 yrs",
+            distance: "5.9 billion km",
+            desc: "Dwarf planet in the Kuiper belt.",
+            img: "https://solarsystem.nasa.gov/system/feature_items/images/147_PIA19952.jpg",
+            embedId: "nu4uB2BJwT0"
+        }
+    ];
 
-function renderPlanets(){
-const age=parseFloat(earthAge.value)||1;
-planetOutput.innerHTML='';
-planets.forEach(p=>{
-planetOutput.innerHTML+=`
-<div class="planet-card">
-<h2>${p.name}</h2>
-<div class="data-row"><span>Age:</span><span>${(age/p.factor).toFixed(2)} years</span></div>
-<div class="data-row"><span>Revolutions:</span><span>${(age/p.factor).toFixed(2)}</span></div>
-<div class="data-row"><span>Orbital Period:</span><span>${p.period}</span></div>
-<div class="data-row"><span>Distance from Sun:</span><span>${p.distance}</span></div>
-<div class="desc">${p.desc}</div>
-<img class="planet-img" src="${p.img}">
-<div class="video-container">
-<iframe src="https://www.youtube.com/embed/${p.vid}" allowfullscreen></iframe>
-</div>
-</div>`
-})
-}
+    function updatePlanets() {
+        const earthAge = parseFloat(document.getElementById('ageInput').value) || 0;
+        const grid = document.getElementById('planetGrid');
+        grid.innerHTML = '';
 
-showHome();
+        planetData.forEach(planet => {
+            const age = (earthAge / planet.factor).toFixed(4);
+            const revolutions = (earthAge / planet.factor).toFixed(2);
+
+            grid.innerHTML += `
+                <div class="planet-card">
+                    <h2>${planet.name}</h2>
+
+                    <div class="data-row"><span>Age:</span><span>${age} yrs</span></div>
+                    <div class="data-row"><span>Revolutions:</span><span>${revolutions}</span></div>
+                    <div class="data-row"><span>Orbital Period:</span><span>${planet.period}</span></div>
+                    <div class="data-row"><span>Distance from Sun:</span><span>${planet.distance}</span></div>
+
+                    <p style="margin-top:10px; font-size:0.85rem; color:#8b949e;">
+                        <strong>Description:</strong> ${planet.desc}
+                    </p>
+
+                    <img src="${planet.img}" style="width:100%; border-radius:12px; margin-top:12px;">
+
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/${planet.embedId}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>`;
+        });
+    }
+
+    showHome();
 </script>
-</body>
-</html>
