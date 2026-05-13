@@ -10,7 +10,6 @@
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             color: #eef2ff;
             line-height: 1.5;
-            margin: 0;
         }
 
         /* Navigation */
@@ -73,7 +72,6 @@
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            margin-bottom: 1rem;
         }
         .hero h3 {
             font-size: 1.6rem;
@@ -162,7 +160,6 @@
             margin-bottom: 2rem;
             transition: 0.2s;
             color: #8eabf0;
-            text-decoration: none;
         }
 
         /* 3D Solar Styles */
@@ -275,89 +272,70 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">CREATIVE PORTFOLIO</div>
-        <div class="nav-links">
-            <a href="#">Work</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
+<div class="subpage-container">
+    <div class="back-home-btn">← Back to Projects</div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Creative Developer</h1>
-            <h3>3D RENDERING & VISUAL ARTS</h3>
-            <p>Exploring the intersection of digital space and traditional motion.</p>
-        </div>
-    </section>
-
-    <div class="subpage-container">
-        <a href="#" class="back-home-btn">← Back to Projects</a>
+    <!-- 3D SOLAR SYSTEM SECTION -->
+    <div class="planet-card">
+        <div class="card-badge">3D RENDERING</div>
+        <h2 style="margin-top: 0;">3D Solar System</h2>
         
-        <h2 style="margin-bottom: 2rem;">3D Solar System Project</h2>
+        <!-- ADDED PLANET LINKS HERE -->
+        <div class="data-row"><span>VENUS:</span> <a href="#" style="color: #58a6ff;">Link</a></div>
+        <div class="data-row"><span>EARTH:</span> <a href="#" style="color: #58a6ff;">Link</a></div>
+        <div class="data-row"><span>MARS:</span> <a href="#" style="color: #58a6ff;">Link</a></div>
+        <div class="data-row"><span>JUPITER:</span> <a href="#" style="color: #58a6ff;">Link</a></div>
+        <div class="data-row"><span>SATURN:</span> <a href="#" style="color: #58a6ff;">Link</a></div>
+        <div class="data-row"><span>URANUS:</span> <a href="#" style="color: #58a6ff;">Link</a></div>
+        <div class="data-row"><span>NEPTUNE:</span> <a href="#" style="color: #58a6ff;">Link</a></div>
+        <div class="data-row"><span>PLUTO:</span> <a href="#" style="color: #58a6ff;">Link</a></div>
 
-        <!-- PROJECT CONTENT START -->
-        <div class="celestial-grid">
-            <!-- New Planet Links Section -->
-            <div class="planet-card">
-                <h3 style="color: #58a6ff; margin-top: 0;">Planet Exploration</h3>
-                <div class="data-row"><span>VENUS:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Venus</a></div>
-                <div class="data-row"><span>EARTH:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Earth</a></div>
-                <div class="data-row"><span>MARS:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Mars</a></div>
-                <div class="data-row"><span>JUPITER:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Jupiter</a></div>
-                <div class="data-row"><span>SATURN:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Saturn</a></div>
-                <div class="data-row"><span>URANUS:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Uranus</a></div>
-                <div class="data-row"><span>NEPTUNE:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Neptune</a></div>
-                <div class="data-row"><span>PLUTO:</span> <a href="#" style="color: #a371f7; text-decoration: none;">Explore Pluto</a></div>
-            </div>
-
-            <!-- Solar System Video Section -->
-            <div class="planet-card">
-                <h3 style="color: #58a6ff; margin-top: 0;">3D Solar System Render</h3>
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/libKVRa01L8" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <p style="font-size: 0.85rem; color: #8b949e; margin-top: 1rem;">
-                    Full orbital simulation with accurate axial tilts and rotational periods.
-                </p>
-            </div>
-        </div>
-        <!-- PROJECT CONTENT END -->
-
-        <div class="weekly-progress">
-            <h3>📅 Weekly Progress</h3>
-            <div class="progress-grid">
-                <div class="step-item">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/example1" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <p style="text-align: center; margin-top: 10px;">Week 1 - Outlining</p>
-                </div>
-                <div class="step-item">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/example2" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <p style="text-align: center; margin-top: 10px;">Week 2 - Color Blocking</p>
-                </div>
-                <div class="step-item">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/example3" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <p style="text-align: center; margin-top: 10px;">Week 3 - Final Output</p>
-                </div>
-            </div>
+        <!-- SOLAR SYSTEM VIDEO HERE -->
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/libKVRa01L8" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Creative Portfolio. All rights reserved.</p>
-    </footer>
+    <br>
+
+    <!-- ROTOSCOPE SECTION SEPARATED -->
+    <div class="planet-card">
+        <div class="card-badge">ROTOSCOPE</div>
+        <h2 style="margin-top: 0;">1-minute Video Rotoscope</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- WEEKLY PROGRESS SECTION -->
+    <div class="weekly-progress">
+        <h3>📅 Weekly Progress</h3>
+        <div class="progress-grid">
+            <div class="step-item">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/example1" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p style="text-align: center;">Week 1 - Outlining</p>
+            </div>
+            <div class="step-item">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/example2" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p style="text-align: center;">Week 2 - Color Blocking</p>
+            </div>
+            <div class="step-item">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/example3" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <p style="text-align: center;">Week 3 - Final Output</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Creative Portfolio</p>
+</footer>
 
 </body>
 </html>
