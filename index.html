@@ -3,100 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Multimedia Portfolio | 3D Authoring & Rotoscoping</title>
+<title>Multimedia Portfolio | 3D Solar System</title>
 
 <style>
-/* === YOUR ORIGINAL CSS (unchanged) === */
-:root {
-    --bg-dark: #0a0c10;
-    --bg-card: #0d1117;
-    --border-color: #30363d;
-    --border-hover: #58a6ff;
-    --accent-primary: #58a6ff;
-    --accent-secondary: #a371f7;
-    --text-white: #eef2ff;
-    --text-gray: #8b949e;
-    --calc-panel: #21262d;
-    --input-field: #ffffff;
-    --button-cyan: #00aeef;
-    --transition-speed: 0.4s;
+:root{
+ --bg-dark:#0a0c10; --bg-card:#0d1117; --border:#30363d;
+ --accent:#58a6ff; --text:#eef2ff;
 }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg-dark);font-family:Inter,system-ui;color:var(--text);}
 
-*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;}
-body{background-color:var(--bg-dark);font-family:'Inter',sans-serif;color:var(--text-white);line-height:1.6;overflow-x:hidden;}
-.header-nav{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 10%;background:rgba(13,17,23,.98);backdrop-filter:blur(25px);border-bottom:1px solid var(--border-color);position:sticky;top:0;z-index:9999;}
-.brand-logo{font-size:1.7rem;font-weight:900;background:linear-gradient(135deg,var(--accent-primary),var(--accent-secondary));-webkit-background-clip:text;color:transparent;cursor:pointer;}
-.nav-menu{display:flex;list-style:none;gap:3rem;}
-.nav-item{color:var(--text-gray);font-weight:600;cursor:pointer;}
-.nav-item.active{color:var(--accent-primary);}
+.header{padding:30px 10%;font-size:28px;font-weight:800;color:var(--accent);}
 
-.hero-banner{text-align:center;padding:100px 10% 60px;background:radial-gradient(circle at 50% 0%,#1c2128 0%,#0a0c10 100%);}
-.hero-banner h1{font-size:4rem;font-weight:800;margin-bottom:20px;}
+.hero-video{
+ max-width:1200px;margin:40px auto;border-radius:20px;overflow:hidden;
+ box-shadow:0 40px 80px rgba(0,0,0,.6);
+}
+.hero-video iframe{width:100%;height:600px;border:none;}
 
-.planet-container{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:40px;padding:0 10% 100px;max-width:1600px;margin:0 auto;}
-.planet-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:20px;padding:35px;display:flex;flex-direction:column;}
-.planet-header{color:var(--accent-primary);font-size:1.8rem;font-weight:800;margin-bottom:25px;border-left:4px solid var(--accent-primary);padding-left:15px;}
-.data-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #21262d;}
-.planet-description{background:rgba(0,174,239,.08);border:1px solid rgba(0,174,239,.25);padding:20px;border-radius:12px;margin-bottom:25px;}
-
-.video-wrapper{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;margin-top:auto;}
-.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
-
-.page-content{display:none;}
-.page-content.active{display:block;}
+.planet-grid{
+ display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));
+ gap:40px;padding:60px 10%;
+}
+.card{
+ background:var(--bg-card);border:1px solid var(--border);
+ border-radius:20px;padding:30px;display:flex;flex-direction:column;
+}
+.card h2{color:var(--accent);margin-bottom:15px;}
+.row{display:flex;justify-content:space-between;margin:8px 0;}
+.desc{margin:15px 0;font-size:14px;opacity:.9;}
+.video{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;margin-top:auto;}
+.video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
 </style>
 </head>
 
 <body>
 
-<nav class="header-nav">
-    <a class="brand-logo" onclick="showPage('solar-page')">MULTIMEDIA.PRO</a>
-    <ul class="nav-menu">
-        <li><a id="link-solar" class="nav-item active" onclick="showPage('solar-page')">3D Solar System</a></li>
-        <li><a id="link-roto" class="nav-item" onclick="showPage('roto-page')">Rotoscoping VFX</a></li>
-    </ul>
-</nav>
+<div class="header">3D Solar System</div>
 
-<div id="solar-page" class="page-content active">
-    <section class="planet-container" id="planet-display-grid"></section>
+<!-- BIG SOLAR SYSTEM VIDEO -->
+<div class="hero-video">
+    <iframe src="https://www.youtube.com/embed/LRMfNRX0mPE" allowfullscreen></iframe>
 </div>
 
+<div class="planet-grid" id="grid"></div>
+
 <script>
-const SOLAR_DATABASE = [
-{ name:"Mercury", period:88, distance:"57.9 million", video:"https://www.youtube.com/embed/LRMfNRX0mPE", desc:"The smallest and innermost planet." },
-{ name:"Venus", period:224.7, distance:"108.2 million", video:"https://www.youtube.com/embed/zUlkcbZ7Pvs", desc:"Thick toxic atmosphere traps heat." },
-{ name:"Earth", period:365.25, distance:"149.6 million", video:"https://www.youtube.com/embed/6hWwo9aIcmg", desc:"The only known planet to harbor life." },
-{ name:"Mars", period:687, distance:"227.9 million", video:"https://www.youtube.com/embed/UcKZSMwK7TA", desc:"The red planet with polar caps." },
-{ name:"Jupiter", period:4333, distance:"778.6 million", video:"https://www.youtube.com/embed/IfG4B6wL7q8", desc:"Gas giant with Great Red Spot." },
-{ name:"Saturn", period:10759, distance:"1.4 billion", video:"https://www.youtube.com/embed/wIrbnshKDXc", desc:"Famous for its rings." },
-{ name:"Uranus", period:30687, distance:"2.9 billion", video:"https://www.youtube.com/embed/LQlDUDf6JrE", desc:"Rotates on its side." },
-{ name:"Neptune", period:60190, distance:"4.5 billion", video:"https://www.youtube.com/embed/XV_7KDQRoR4", desc:"Dark, cold, supersonic winds." }
+const planets=[
+{n:"Mercury",p:88,d:"57.9 million",v:"zUlkcbZ7Pvs",t:"Smallest planet with extreme temperatures."},
+{n:"Venus",p:224.7,d:"108.2 million",v:"6hWwo9aIcmg",t:"Hottest planet due to thick atmosphere."},
+{n:"Earth",p:365.25,d:"149.6 million",v:"UcKZSMwK7TA",t:"Only planet known to support life."},
+{n:"Mars",p:687,d:"227.9 million",v:"IfG4B6wL7q8",t:"Red planet with largest volcano."},
+{n:"Jupiter",p:4333,d:"778.6 million",v:"wIrbnshKDXc",t:"Gas giant with Great Red Spot."},
+{n:"Saturn",p:10759,d:"1.4 billion",v:"LQlDUDf6JrE",t:"Planet with prominent rings."},
+{n:"Uranus",p:30687,d:"2.9 billion",v:"XV_7KDQRoR4",t:"Rotates on its side."},
+{n:"Neptune",p:60190,d:"4.5 billion",v:"nu4uB2BJwT0",t:"Furthest planet with strong winds."}
 ];
 
-function showPage(id){
-    document.querySelectorAll('.page-content').forEach(p=>p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-}
-
-function renderPlanets(){
-    const grid=document.getElementById('planet-display-grid');
-    SOLAR_DATABASE.forEach(p=>{
-        const card=document.createElement('div');
-        card.className='planet-card';
-        card.innerHTML=`
-            <div class="planet-header">${p.name}</div>
-            <div class="data-row"><span>Orbital Period</span><span>${p.period} days</span></div>
-            <div class="data-row"><span>Distance</span><span>${p.distance} km</span></div>
-            <div class="planet-description">${p.desc}</div>
-            <div class="video-wrapper">
-                <iframe src="${p.video}" allowfullscreen></iframe>
-            </div>
-        `;
-        grid.appendChild(card);
-    });
-}
-
-renderPlanets();
+const grid=document.getElementById("grid");
+planets.forEach(x=>{
+ grid.innerHTML+=`
+ <div class="card">
+   <h2>${x.n}</h2>
+   <div class="row"><span>Orbital Period</span><span>${x.p} days</span></div>
+   <div class="row"><span>Distance</span><span>${x.d} km</span></div>
+   <div class="desc">${x.t}</div>
+   <div class="video"><iframe src="https://www.youtube.com/embed/${x.v}" allowfullscreen></iframe></div>
+ </div>`;
+});
 </script>
 
 </body>
