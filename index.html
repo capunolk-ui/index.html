@@ -3,88 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Multimedia Portfolio | 3D Authoring & Rotoscoping</title>
+<title>Multimedia Portfolio | Emmanuel Capuno</title>
 
-<!-- ===== YOUR FULL ORIGINAL CSS (UNCHANGED) ===== -->
 <style>
-/* (your entire original <style> from the first message is here EXACTLY, unchanged) */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#0b0f14;color:#fff}
+h1{text-align:center;padding:20px 0;font-size:40px}
+.section{padding:40px 8%}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px}
+.card{background:#121821;border-radius:10px;padding:15px;box-shadow:0 0 15px #000}
+.card h3{text-align:center;margin-bottom:10px}
+iframe{width:100%;height:200px;border-radius:8px;border:none}
+.hero iframe{height:420px}
 </style>
 </head>
 
 <body>
 
-<nav class="header-nav">
-    <a class="brand-logo" onclick="showPage('solar-page')">MULTIMEDIA.PRO</a>
-    <ul class="nav-menu">
-        <li><a id="link-solar" class="nav-item active" onclick="showPage('solar-page')">3D Solar System</a></li>
-        <li><a id="link-roto" class="nav-item" onclick="showPage('roto-page')">Rotoscoping VFX</a></li>
-    </ul>
-</nav>
+<h1>Solar System Animation</h1>
 
-<!-- ================= SOLAR PAGE ================= -->
-<div id="solar-page" class="page-content active">
+<div class="section hero">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID_SOLAR" allowfullscreen></iframe>
+</div>
 
-    <!-- HERO VIDEO -->
-    <section style="max-width:1200px;margin:60px auto 20px auto;padding:0 10%;">
-        <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:18px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6);">
-            <iframe src="https://www.youtube.com/embed/LRMfNRX0mPE"
-            style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
-            allowfullscreen></iframe>
+<div class="section">
+    <div class="grid">
+        <div class="card">
+            <h3>Mercury</h3>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_MERCURY" allowfullscreen></iframe>
         </div>
-    </section>
-
-    <!-- CALCULATOR (unchanged) -->
-    <section class="solar-calculator"> ... </section>
-
-    <!-- PLANET CARDS -->
-    <section class="planet-container" id="planet-display-grid"></section>
-
+        <div class="card">
+            <h3>Venus</h3>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_VENUS" allowfullscreen></iframe>
+        </div>
+        <div class="card">
+            <h3>Earth</h3>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_EARTH" allowfullscreen></iframe>
+        </div>
+        <div class="card">
+            <h3>Mars</h3>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_MARS" allowfullscreen></iframe>
+        </div>
+    </div>
 </div>
 
-<!-- ================= ROTOSCOPING PAGE (FULLY INTACT) ================= -->
-<div id="roto-page" class="page-content">
-    <!-- your full original tutorial-grid and weekly progress sections are here unchanged -->
+<h1>Rotoscoping Tutorial</h1>
+
+<div class="section">
+    <div class="card">
+        <h3>1 Minute Rotoscope Tutorial</h3>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_ROTO" allowfullscreen></iframe>
+    </div>
 </div>
 
-<script>
-/* ===== YOUR ORIGINAL JS WITH ONLY ONE CHANGE ===== */
+<h1>Weekly Progress</h1>
 
-const SOLAR_DATABASE = [
-{ name:"Mercury", period:88, distance:"57.9 million", video:"zUlkcbZ7Pvs", desc:"..." },
-{ name:"Venus", period:224.7, distance:"108.2 million", video:"6hWwo9aIcmg", desc:"..." },
-{ name:"Earth", period:365.25, distance:"149.6 million", video:"UcKZSMwK7TA", desc:"..." },
-{ name:"Mars", period:687, distance:"227.9 million", video:"IfG4B6wL7q8", desc:"..." },
-{ name:"Jupiter", period:4333, distance:"778.6 million", video:"wIrbnshKDXc", desc:"..." },
-{ name:"Saturn", period:10759, distance:"1.4 billion", video:"LQlDUDf6JrE", desc:"..." },
-{ name:"Uranus", period:30687, distance:"2.9 billion", video:"XV_7KDQRoR4", desc:"..." },
-{ name:"Neptune", period:60190, distance:"4.5 billion", video:"nu4uB2BJwT0", desc:"..." }
-];
-
-function performCalculation() {
-    const container = document.getElementById('planet-display-grid');
-    container.innerHTML = '';
-
-    SOLAR_DATABASE.forEach(planet => {
-        const card = document.createElement('div');
-        card.className = 'planet-card';
-        card.innerHTML = `
-            <div class="planet-header">${planet.name}</div>
-
-            <div class="data-table">
-                <div class="data-row"><span>Orbital Period:</span><span>${planet.period} days</span></div>
-                <div class="data-row"><span>Distance:</span><span>${planet.distance} km</span></div>
-            </div>
-
-            <div class="planet-description">${planet.desc}</div>
-
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/${planet.video}" allowfullscreen></iframe>
-            </div>
-        `;
-        container.appendChild(card);
-    });
-}
-</script>
+<div class="section">
+    <div class="grid">
+        <div class="card">
+            <h3>Week 1</h3>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_W1" allowfullscreen></iframe>
+        </div>
+        <div class="card">
+            <h3>Week 2</h3>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_W2" allowfullscreen></iframe>
+        </div>
+        <div class="card">
+            <h3>Week 3</h3>
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID_W3" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
