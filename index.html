@@ -253,8 +253,8 @@
     /* Planets Grid */
     .planets-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
       margin: 1.5rem 0;
     }
 
@@ -263,7 +263,6 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 16px;
       padding: 1rem;
-      text-align: center;
       transition: 0.2s;
     }
 
@@ -273,22 +272,26 @@
 
     .planet-card strong {
       font-size: 1rem;
+      display: block;
+      margin-bottom: 0.5rem;
     }
 
-    .planet-btn {
-      margin-top: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border: none;
-      padding: 6px 12px;
-      border-radius: 30px;
-      color: white;
-      font-size: 0.7rem;
-      cursor: pointer;
-      transition: 0.2s;
+    .planet-video {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      margin: 0.5rem 0;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
-    .planet-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
+    .planet-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
     }
 
     /* Calculator */
@@ -397,20 +400,27 @@
       border-radius: 16px;
       padding: 1rem;
       flex: 1;
-      min-width: 150px;
+      min-width: 200px;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .week-btn {
-      margin-top: 10px;
-      background: #2c5a74;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 30px;
-      color: white;
-      cursor: pointer;
-      font-size: 0.75rem;
+    .week-video {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      margin: 0.8rem 0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .week-video iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
     }
 
     hr {
@@ -445,6 +455,9 @@
       .portfolio-subnav {
         flex-wrap: wrap;
         gap: 0.8rem;
+      }
+      .planets-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -509,8 +522,8 @@
         <p style="font-size: 0.8rem; color: #888;">Render Time: ~13h 30m | 1920x1080 @24fps | 3500 frames (2min 25s)</p>
       </div>
 
-      <!-- Planet Gallery -->
-      <h3 style="margin: 1.5rem 0 0.5rem;">📽️ Planet Videos</h3>
+      <!-- Planet Gallery - Embedded Videos -->
+      <h3 style="margin: 1.5rem 0 0.5rem;">📽️ Planet Videos (Watch directly on site)</h3>
       <div class="planets-grid" id="planetLinksContainer"></div>
 
       <!-- Calculator -->
@@ -560,8 +573,8 @@
       <h3 style="margin-top: 2rem;">📖 Step-by-Step Tutorial</h3>
       <div class="step-list" id="stepList"></div>
 
-      <!-- Weekly Progress -->
-      <h3 style="margin-top: 2rem;">📅 Weekly Progress</h3>
+      <!-- Weekly Progress with Embedded Videos -->
+      <h3 style="margin-top: 2rem;">📅 Weekly Progress (Watch directly on site)</h3>
       <div class="weekly-progress" id="weeklyProgress"></div>
     </div>
   </div>
@@ -587,6 +600,24 @@
 </footer>
 
 <script>
+  // Function to convert YouTube URL to embed URL
+  function getEmbedUrl(url) {
+    let videoId = '';
+    // Handle youtu.be format
+    if (url.includes('youtu.be/')) {
+      videoId = url.split('youtu.be/')[1].split('?')[0];
+    }
+    // Handle youtube.com/watch?v= format
+    else if (url.includes('youtube.com/watch?v=')) {
+      videoId = url.split('v=')[1].split('&')[0];
+    }
+    // Handle youtube.com/embed/ format
+    else if (url.includes('youtube.com/embed/')) {
+      return url;
+    }
+    return `https://www.youtube.com/embed/${videoId}`;
+  }
+
   // ========== MAIN NAVIGATION (Home / Portfolio / About) ==========
   const sections = {
     home: document.getElementById('home'),
@@ -645,7 +676,7 @@
     });
   });
 
-  // ========== PLANET DATA (All 9 planets) ==========
+  // ========== PLANET DATA (All 9 planets with embedded videos) ==========
   const planetsData = [
     { name: "Mercury", orbitalPeriodDays: 88, distanceKm: 57.9e6, ytLink: "https://youtu.be/mrUZM4u1I0E" },
     { name: "Venus", orbitalPeriodDays: 225, distanceKm: 108.2e6, ytLink: "https://youtu.be/zUlkcbZ7Pvs" },
@@ -658,16 +689,19 @@
     { name: "Pluto", orbitalPeriodDays: 90560, distanceKm: 5906e6, ytLink: "https://youtu.be/nu4uB2BJwT0" }
   ];
 
-  // Build planet gallery
+  // Build planet gallery with embedded videos
   const galleryContainer = document.getElementById('planetLinksContainer');
   if (galleryContainer) {
     planetsData.forEach(planet => {
+      const embedUrl = getEmbedUrl(planet.ytLink);
       const card = document.createElement('div');
       card.className = 'planet-card';
       card.innerHTML = `
-        <strong>${planet.name}</strong>
-        <div style="margin: 6px 0; font-size:0.7rem; color:#888;">Click to watch</div>
-        <button class="planet-btn" onclick="window.open('${planet.ytLink}', '_blank')">▶ Watch on YouTube</button>
+        <strong>🪐 ${planet.name}</strong>
+        <div class="planet-video">
+          <iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <p style="font-size:0.7rem; color:#888; margin-top:0.5rem;">Watch ${planet.name} video directly above</p>
       `;
       galleryContainer.appendChild(card);
     });
@@ -751,7 +785,7 @@
     });
   }
 
-  // Weekly Progress with YouTube links
+  // Weekly Progress with embedded YouTube videos
   const weeks = [
     { title: "Week 1 - Rotoscope Pt.1", url: "https://youtu.be/IkS9TObr_vM" },
     { title: "Week 2 - Rotoscope Pt.2", url: "https://youtu.be/AMBzzFDpU-Q" },
@@ -761,11 +795,14 @@
   const weeklyDiv = document.getElementById('weeklyProgress');
   if (weeklyDiv) {
     weeks.forEach(week => {
+      const embedUrl = getEmbedUrl(week.url);
       const card = document.createElement('div');
       card.className = 'week-card';
       card.innerHTML = `
         <strong>${week.title}</strong>
-        <div><button class="week-btn" onclick="window.open('${week.url}', '_blank')">Watch on YouTube</button></div>
+        <div class="week-video">
+          <iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>
+        </div>
       `;
       weeklyDiv.appendChild(card);
     });
