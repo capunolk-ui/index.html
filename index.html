@@ -30,6 +30,7 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(10px);
+      flex-wrap: wrap;
     }
 
     .logo {
@@ -51,11 +52,43 @@
       transition: 0.2s;
       font-size: 0.95rem;
       letter-spacing: 0.5px;
+      cursor: pointer;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
       color: #ffffff;
+    }
+
+    /* Portfolio Sub-Navigation */
+    .portfolio-subnav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .portfolio-subnav a {
+      text-decoration: none;
+      color: #888;
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+
+    .portfolio-subnav a:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .portfolio-subnav a.active-sub {
+      color: #fff;
+      background: #2c5a74;
     }
 
     /* Sections */
@@ -65,6 +98,16 @@
     }
 
     .section.active-section {
+      display: block;
+    }
+
+    /* Portfolio Sub-pages */
+    .portfolio-page {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .portfolio-page.active-portfolio-page {
       display: block;
     }
 
@@ -399,6 +442,10 @@
       .container {
         padding: 1rem;
       }
+      .portfolio-subnav {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
     }
   </style>
 </head>
@@ -407,9 +454,9 @@
 <nav class="navbar">
   <div class="logo">MULTIMEDIA & AUTHORING</div>
   <div class="nav-links">
-    <a href="#" data-section="home" class="nav-link active">Home</a>
-    <a href="#" data-section="portfolio" class="nav-link">Portfolio</a>
-    <a href="#" data-section="about" class="nav-link">About</a>
+    <a data-section="home" class="nav-link active">Home</a>
+    <a data-section="portfolio" class="nav-link">Portfolio</a>
+    <a data-section="about" class="nav-link">About</a>
   </div>
 </nav>
 
@@ -437,71 +484,86 @@
   </div>
 </section>
 
-<!-- PORTFOLIO SECTION -->
+<!-- PORTFOLIO SECTION (with sub-pages) -->
 <section id="portfolio" class="section">
   <div class="container">
-    <!-- 3D Solar System -->
-    <div class="project-card">
-      <div class="project-title">🌌 3D Solar System</div>
-      <p style="color: #aaa; margin-bottom: 0.5rem;">A dynamic 3D solar system animation created in Blender, utilizing Python scripting for procedural automation and precise celestial motion.</p>
-      <div class="project-tags">
-        <span class="tag">Blender 3.3</span>
-        <span class="tag">3D Modeling</span>
-        <span class="tag">Python Script</span>
-      </div>
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/LRMfNRX0mPE" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <p style="font-size: 0.8rem; color: #888;">Render Time: ~13h 30m | 1920x1080 @24fps | 3500 frames (2min 25s)</p>
+    <!-- Sub Navigation -->
+    <div class="portfolio-subnav">
+      <a data-portfolio="solarsystem" class="active-sub">🌌 3D Solar System</a>
+      <a data-portfolio="rotoscope">🎬 1-Minute Rotoscope Video</a>
     </div>
 
-    <!-- Planet Gallery -->
-    <h3 style="margin: 1.5rem 0 0.5rem;">📽️ Planet Videos</h3>
-    <div class="planets-grid" id="planetLinksContainer"></div>
-
-    <!-- Calculator -->
-    <div class="calculator-box">
-      <h3>🪐 Calculate Time & Motion in the Solar System</h3>
-      <div class="calc-input-group">
-        <input type="number" id="earthYearsInput" placeholder="Enter Earth years" value="1" step="any">
-        <button id="calculateBtn">Calculate</button>
+    <!-- 3D Solar System Page -->
+    <div id="solarsystem-page" class="portfolio-page active-portfolio-page">
+      <div class="project-card">
+        <div class="project-title">🌌 3D Solar System</div>
+        <p style="color: #aaa; margin-bottom: 0.5rem;">A dynamic 3D solar system animation created in Blender, utilizing Python scripting (v3.3) in the Scripting tab for procedural automation and precise celestial motion.</p>
+        <div class="project-tags">
+          <span class="tag">Blender 3.3</span>
+          <span class="tag">3D Modeling</span>
+          <span class="tag">Python Script</span>
+        </div>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/LRMfNRX0mPE" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <p style="font-size: 0.8rem; color: #888;">Render Time: ~13h 30m | 1920x1080 @24fps | 3500 frames (2min 25s)</p>
       </div>
-      <div id="calcResults" class="planets-table"></div>
+
+      <!-- Planet Gallery -->
+      <h3 style="margin: 1.5rem 0 0.5rem;">📽️ Planet Videos</h3>
+      <div class="planets-grid" id="planetLinksContainer"></div>
+
+      <!-- Calculator -->
+      <div class="calculator-box">
+        <h3>🪐 Calculate Time & Motion in the Solar System</h3>
+        <div class="calc-input-group">
+          <input type="number" id="earthYearsInput" placeholder="Enter Earth years" value="1" step="any">
+          <button id="calculateBtn">Calculate</button>
+        </div>
+        <div id="calcResults" class="planets-table"></div>
+        <p style="font-size: 0.7rem; color: #666; margin-top: 0.5rem;">Enter Earth years to see ages, revolutions, orbital periods, and distances for all planets</p>
+      </div>
+
+      <!-- Animation Sequence -->
+      <div class="info-banner">
+        <h4>Animation Sequence</h4>
+        <ul style="margin-left: 1.2rem; color: #aaa; font-size: 0.85rem;">
+          <li><strong>Opening Sequence (0-3s):</strong> Camera zooms from Sun into Mercury, establishing scale</li>
+          <li><strong>Planetary Tour (3 sec each planet):</strong> Smooth transitions between each planet (Mercury to Pluto) displaying planet name</li>
+          <li><strong>Solar System Overview (1 minute):</strong> Camera zooms out to show complete solar system with all planets orbiting</li>
+        </ul>
+      </div>
+
+      <!-- Texture & Tools Info -->
+      <div style="background: rgba(25, 25, 30, 0.5); border-radius: 16px; padding: 1rem; margin-top: 1rem;">
+        <p style="font-size: 0.85rem;"><strong>Texture Materials:</strong> High-resolution planetary textures sourced from Solar System Scope's texture library</p>
+        <p style="font-size: 0.85rem; margin-top: 0.5rem;"><strong>Python Scripts:</strong> Custom scripts for Sun and each planet's orbital mechanics</p>
+      </div>
     </div>
 
-    <!-- Animation Sequence -->
-    <div class="info-banner">
-      <h4>Animation Sequence</h4>
-      <ul style="margin-left: 1.2rem; color: #aaa; font-size: 0.85rem;">
-        <li>Opening (0-3s): Camera zooms from Sun into Mercury</li>
-        <li>Planetary Tour (3 sec each planet) displaying planet name</li>
-        <li>Solar System Overview: complete system orbiting</li>
-      </ul>
-    </div>
-
-    <hr>
-
-    <!-- 1-Minute Rotoscope Video -->
-    <div class="project-card">
-      <div class="project-title">🎬 1-Minute Rotoscope Video</div>
-      <p style="color: #aaa;">A frame-by-frame animation created using the tracing technique with an auto-brush tool in Adobe After Effects.</p>
-      <div class="project-tags">
-        <span class="tag">Adobe After Effects</span>
-        <span class="tag">Adobe Premiere Pro</span>
-        <span class="tag">CapCut</span>
+    <!-- 1-Minute Rotoscope Video Page -->
+    <div id="rotoscope-page" class="portfolio-page">
+      <div class="project-card">
+        <div class="project-title">🎬 1-Minute Rotoscope Video</div>
+        <p style="color: #aaa;">A frame-by-frame animation created using the tracing technique with an auto-brush tool in Adobe After Effects.</p>
+        <div class="project-tags">
+          <span class="tag">Adobe After Effects</span>
+          <span class="tag">Adobe Premiere Pro</span>
+          <span class="tag">CapCut</span>
+        </div>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/v6l8OnXDgYM" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
-      <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/v6l8OnXDgYM" frameborder="0" allowfullscreen></iframe>
-      </div>
+
+      <!-- Step-by-Step Tutorial (no images) -->
+      <h3 style="margin-top: 2rem;">📖 Step-by-Step Tutorial</h3>
+      <div class="step-list" id="stepList"></div>
+
+      <!-- Weekly Progress -->
+      <h3 style="margin-top: 2rem;">📅 Weekly Progress</h3>
+      <div class="weekly-progress" id="weeklyProgress"></div>
     </div>
-
-    <!-- Step-by-Step Tutorial (no images) -->
-    <h3 style="margin-top: 2rem;">📖 Step-by-Step Tutorial</h3>
-    <div class="step-list" id="stepList"></div>
-
-    <!-- Weekly Progress -->
-    <h3 style="margin-top: 2rem;">📅 Weekly Progress</h3>
-    <div class="weekly-progress" id="weeklyProgress"></div>
   </div>
 </section>
 
@@ -515,7 +577,7 @@
       <p class="hero-desc" style="max-width: 700px;">I'm a multimedia enthusiast exploring 3D rendering, rotoscoping, and visual storytelling. With a passion for combining technical tools like Blender, Python, and Adobe ecosystem, I create immersive digital experiences.</p>
     </div>
     <div class="info-banner">
-      <p>📍 Techniques I master: procedural generation in Blender, Roto Brush in After Effects, video editing in Premiere Pro, and multi-layer compositing. Based in the Philippines | Open to collaborations.</p>
+      <p>📍 Techniques I master: procedural generation in Blender, Roto Brush in After Effects, video editing in Premiere Pro, and multi-layer compositing. Based in the Philippines | Open to collaborations and creative projects.</p>
     </div>
   </div>
 </section>
@@ -525,7 +587,7 @@
 </footer>
 
 <script>
-  // Navigation
+  // ========== MAIN NAVIGATION (Home / Portfolio / About) ==========
   const sections = {
     home: document.getElementById('home'),
     portfolio: document.getElementById('portfolio'),
@@ -554,7 +616,36 @@
     });
   });
 
-  // Planet Data (all 9 including Pluto)
+  // ========== PORTFOLIO SUB-NAVIGATION (Solar System / Rotoscope) ==========
+  const solarSystemPage = document.getElementById('solarsystem-page');
+  const rotoscopePage = document.getElementById('rotoscope-page');
+  const subNavLinks = document.querySelectorAll('.portfolio-subnav a');
+
+  function activatePortfolioPage(pageId) {
+    if (pageId === 'solarsystem') {
+      solarSystemPage.classList.add('active-portfolio-page');
+      rotoscopePage.classList.remove('active-portfolio-page');
+    } else {
+      rotoscopePage.classList.add('active-portfolio-page');
+      solarSystemPage.classList.remove('active-portfolio-page');
+    }
+    subNavLinks.forEach(link => {
+      link.classList.remove('active-sub');
+      if (link.getAttribute('data-portfolio') === pageId) {
+        link.classList.add('active-sub');
+      }
+    });
+  }
+
+  subNavLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const pageId = link.getAttribute('data-portfolio');
+      if (pageId) activatePortfolioPage(pageId);
+    });
+  });
+
+  // ========== PLANET DATA (All 9 planets) ==========
   const planetsData = [
     { name: "Mercury", orbitalPeriodDays: 88, distanceKm: 57.9e6, ytLink: "https://youtu.be/mrUZM4u1I0E" },
     { name: "Venus", orbitalPeriodDays: 225, distanceKm: 108.2e6, ytLink: "https://youtu.be/zUlkcbZ7Pvs" },
@@ -582,7 +673,7 @@
     });
   }
 
-  // Calculator function
+  // Calculator functions
   function calculatePlanets(earthYears) {
     const years = parseFloat(earthYears);
     if (isNaN(years) || years < 0) return null;
@@ -639,16 +730,16 @@
     renderCalculator(1);
   }
 
-  // Step-by-step (text only, no images)
+  // Step-by-step tutorial (text only)
   const steps = [
-    "Select Source Material: Choose high-quality video with clear subject-background contrast.",
-    "Cut the Video into 5-Second Clips: Use CapCut to split selected video into 5-second segments.",
-    "Create a New Composition: In After Effects, create separate 5-second comp for each clip.",
-    "Render All Compositions: Export each comp via Render Queue with consistent settings.",
-    "Trace Each Layer: Isolate subject into layers using Roto Brush Tool.",
-    "Add Fill Colors to Layers: Apply solid color fills to each isolated layer for stylization.",
-    "Compile All 5-Second Clips: Combine clips in CapCut, add audio, export mp4.",
-    "Edit Lyrics & Background: Use Adobe Premiere Pro to add lyrics, sync audio, change background colors."
+    "Select Source Material: Choose high-quality video with clear subject-background contrast and interesting movement patterns.",
+    "Cut the Video into 5-Second Clips: Use CapCut to split selected video into 5-second segments for easier editing.",
+    "Create a New Composition: In After Effects, create a separate 5-second composition for each clip segment.",
+    "Render All Compositions: Export each 5-second composition through the Render Queue with consistent settings.",
+    "Trace Each Layer: Isolate the subject into separate layers (shirt, pants, body, hair, shoes) using the Roto Brush Tool. Freeze each layer to edit others independently.",
+    "Add Fill Colors to Layers: Apply solid color fills to each isolated layer (shirt, pants, hair, etc.) to prepare for stylization.",
+    "Compile All 5-Second Clips: Combine all clips in CapCut, add audio, and export in mp4 format.",
+    "Edit Lyrics & Background: Use Adobe Premiere Pro to add lyrics, sync them with the audio, and change background colors to enhance visual appeal."
   ];
   const stepContainer = document.getElementById('stepList');
   if (stepContainer) {
