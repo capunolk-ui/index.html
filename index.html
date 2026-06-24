@@ -1,3 +1,6 @@
+Here is the complete, fully updated code for your website with the updated weeks 1–4, the new weeks 5–12, and an optimized grid layout to handle all 12 cards cleanly.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -397,10 +400,10 @@
       font-size: 0.8rem;
     }
 
-    /* Weekly Progress */
+    /* Weekly Progress Grid Layout */
     .weekly-progress {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 1rem;
       margin: 1.5rem 0;
     }
@@ -409,8 +412,6 @@
       background: rgba(30, 30, 36, 0.7);
       border-radius: 16px;
       padding: 1rem;
-      flex: 1;
-      min-width: 200px;
       text-align: center;
       border: 1px solid rgba(255, 255, 255, 0.05);
     }
@@ -785,10 +786,18 @@
 
   // Weekly Progress
   const weeks = [
-    { title: "Week 1 - Rotoscope Pt.1", url: "https://youtu.be/IkS9TObr_vM" },
-    { title: "Week 2 - Rotoscope Pt.2", url: "https://youtu.be/AMBzzFDpU-Q" },
-    { title: "Week 3 - Rotoscope Pt.3", url: "https://youtu.be/sJ_EoF-0uwI" },
-    { title: "Week 4 - Rotoscope Pt.4", url: "https://youtu.be/audupNA9Mhs" }
+    { title: "Week 1 - Rotoscope", url: "https://youtu.be/fHTbdyBYVMg" },
+    { title: "Week 2 - Rotoscope", url: "https://youtu.be/DfCDyMKjvuo" },
+    { title: "Week 3 - Rotoscope", url: "https://youtu.be/jGM-NIUVs9c" },
+    { title: "Week 4 - Rotoscope", url: "https://youtu.be/bNEhyHb4_NQ" },
+    { title: "Week 5 - Rotoscope", url: "https://youtu.be/PAc3c2aSHdw" },
+    { title: "Week 6 - Rotoscope", url: "https://youtu.be/4W6IGP0Kd14" },
+    { title: "Week 7 - Rotoscope", url: "https://youtu.be/Xr8vpYfYock" },
+    { title: "Week 8 - Rotoscope", url: "https://youtu.be/AbGCJ-9Zdc0" },
+    { title: "Week 9 - Rotoscope", url: "https://youtu.be/DYHCyOerfBQ" },
+    { title: "Week 10 - Rotoscope", url: "https://youtu.be/DtqXsurYf_w" },
+    { title: "Week 11 - Rotoscope", url: "https://youtu.be/AP-mQuCoBtY" },
+    { title: "Week 12 - Rotoscope", url: "https://youtu.be/kCNNfv5aDQU" }
   ];
   const weeklyDiv = document.getElementById('weeklyProgress');
   if (weeklyDiv) {
@@ -808,3 +817,5 @@
 </script>
 </body>
 </html>
+
+```
