@@ -1,6 +1,6 @@
-Here is the updated HTML code for your portfolio. I have replaced the tutorial block to perfectly map your new screenshots and the source video link to their correct steps, and cleanly removed the old 8th step holder.
+Here is the complete, updated HTML file with the correct local filenames (`step2.png`, `step3.jpeg`, etc.) built right into the tutorial array at the bottom.
 
-The image filenames in the `steps` array match the uploaded files exactly (`image_45b796.png`, `image_45be7b.jpg`, etc.) and the structure will load them seamlessly inside your existing `step-list` design:
+You can copy this entire block and use it to replace everything in your current `index.html` file:
 
 ```html
 <!DOCTYPE html>
@@ -832,15 +832,15 @@ The image filenames in the `steps` array match the uploaded files exactly (`imag
     calculateAndUpdateCards(1);
   }
 
-  // ========== STEP-BY-STEP TUTORIAL WITH UPLOADED IMAGES ==========
+  // ========== STEP-BY-STEP TUTORIAL WITH UPDATED LOCAL FILENAMES ==========
   const steps = [
     { text: "Select Source Material: Choose high-quality video with clear subject-background contrast and interesting movement patterns.", isVideo: true, videoUrl: "https://www.youtube.com/embed/v6l8OnXDgYM" },
-    { text: "Cut the Video into 5-Second Clips: Use CapCut to split selected video into 5-second segments for easier editing.", image: "image_45b796.png" },
-    { text: "Create a New Composition: In After Effects, create a separate 5-second composition for each clip segment.", image: "image_45be7b.jpg" },
-    { text: "Trace Each Layer: Isolate the subject into separate layers (shirt, pants, body, hair, shoes) using the Roto Brush Tool. Freeze each layer to edit others independently.", image: "image_45bebe.png" },
-    { text: "Add Fill Colors to Layers: Apply solid color fills to each isolated layer (shirt, pants, hair, etc.) to prepare for stylization.", image: "image_45c1fd.png" },
-    { text: "Render All Compositions: Export each 5-second composition through the Render Queue with consistent settings.", image: "image_45c25e.png" },
-    { text: "Compile All 5-Second Clips: Combine all clips in CapCut, add audio, and export in mp4 format.", image: "image_45c2d6.png" }
+    { text: "Cut the Video into 5-Second Clips: Use CapCut to split selected video into 5-second segments for easier editing.", image: "step2.png" },
+    { text: "Create a New Composition: In After Effects, create a separate 5-second composition for each clip segment.", image: "step3.jpeg" },
+    { text: "Trace Each Layer: Isolate the subject into separate layers (shirt, pants, body, hair, shoes) using the Roto Brush Tool. Freeze each layer to edit others independently.", image: "step4.png" },
+    { text: "Add Fill Colors to Layers: Apply solid color fills to each isolated layer (shirt, pants, hair, etc.) to prepare for stylization.", image: "step5.png" },
+    { text: "Render All Compositions: Export each 5-second composition through the Render Queue with consistent settings.", image: "step6.png" },
+    { text: "Compile All 5-Second Clips: Combine all clips in CapCut, add audio, and export in mp4 format.", image: "step7.png" }
   ];
   
   const stepContainer = document.getElementById('stepList');
